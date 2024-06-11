@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  word-break: keep-all;
+  line-height: 150%;
+}

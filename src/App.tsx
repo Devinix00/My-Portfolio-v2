@@ -1,5 +1,12 @@
+import React from "react";
+import InitialScreen from "./components/containers/InitialScreen";
+
 function App() {
-  return <></>;
+  return (
+    <React.Fragment>
+      <InitialScreen />
+    </React.Fragment>
+  );
 }
 
 export default App;
