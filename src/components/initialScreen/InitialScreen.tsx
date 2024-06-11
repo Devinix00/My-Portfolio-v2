@@ -13,21 +13,21 @@ export default function InitialScreen() {
       <motion.div
         className="bg-black w-[1vw] h-[1vw] rounded-full aspect-w-1 aspect-h-1"
         initial={{ scale: 0 }}
-        animate={{ scale: 200 }}
-        transition={{ duration: 1.5, ease: "easeIn" }}
+        animate={{ scale: 300 }}
+        transition={{ delay: 0.5, duration: 1, ease: "easeIn" }}
         style={{ transformOrigin: "center" }}
       />
 
-      <section className="flex-col justify-between 2xl:flex-row items-center w-[calc(100%-160px)] flex 2xl:top-auto absolute gap-4 2xl:left-20 2xl:bottom-20 z-10 rounded-2xl">
+      <section className="flex-col justify-between 2xl:flex-row items-center w-[calc(100%-80px)] md:w-[calc(100%-160px)] flex 2xl:top-auto absolute gap-4 2xl:left-20 2xl:bottom-20 z-10 rounded-2xl">
         <motion.img
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.25, duration: 0.5 }}
           src={MyPhoto}
           alt="나"
-          className="opacity-90 w-[320px] h-[320px] lg:w-[480px] lg:h-[480px] md:w-[400px] md:h-[400px] 2xl:w-[540px] 2xl:h-[540px] rounded-2xl"
+          className="min-w-[320px] w-[320px] h-[320px] min-h-[320px] lg:w-[480px] lg:h-[480px] md:min-w-[400px] md:min-h-[400px] 2xl:min-w-[540px] 2xl:min-h-[540px]"
         />
-        <section className="text-silver mt-auto flex w-full flex-col gap-4">
+        <section className="mt-auto flex w-full flex-col gap-4">
           <motion.p
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
