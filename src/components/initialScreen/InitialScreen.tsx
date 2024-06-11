@@ -1,11 +1,17 @@
+import { FaArrowDown } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import { MyPhoto } from "../../assets/images";
+import { useState } from "react";
+import useSmoothScroll from "../../hooks/useSmoothScroll";
 
 export default function InitialScreen() {
+  const [isHoveredIcon, setIsHoveredIcon] = useState(false);
+  const { smoothScroll } = useSmoothScroll();
+
   return (
     <div className="relative w-full overflow-y-hidden overflow-x-hidden min-h-[100vh] bg-white flex items-center justify-center">
       <motion.div
-        className="bg-[#1b1b1e] w-[1vw] h-[1vw] rounded-full aspect-w-1 aspect-h-1"
+        className="bg-black w-[1vw] h-[1vw] rounded-full aspect-w-1 aspect-h-1"
         initial={{ scale: 0 }}
         animate={{ scale: 200 }}
         transition={{ duration: 1.5, ease: "easeIn" }}
@@ -21,7 +27,7 @@ export default function InitialScreen() {
           alt="나"
           className="opacity-90 w-[320px] h-[320px] lg:w-[480px] lg:h-[480px] md:w-[400px] md:h-[400px] 2xl:w-[540px] 2xl:h-[540px] rounded-2xl"
         />
-        <section className="text-white mt-auto flex w-full flex-col gap-4">
+        <section className="text-silver mt-auto flex w-full flex-col gap-4">
           <motion.p
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -44,6 +50,14 @@ export default function InitialScreen() {
             생각합니다. 최신 개발 기술을 배우고 적용하는 것을 즐깁니다!
           </motion.p>
         </section>
+        <FaArrowDown
+          size={36}
+          fill={isHoveredIcon ? "#1b1b1e" : "white"}
+          onMouseEnter={() => setIsHoveredIcon(true)}
+          onMouseLeave={() => setIsHoveredIcon(false)}
+          onClick={() => smoothScroll("tech-stacks")}
+          className="absolute -bottom-[20px] left-1/2 hover:bg-silver cursor-pointer -translate-x-1/2 p-2 translate-y-[100%] border-2 rounded-full"
+        />
       </section>
     </div>
   );
