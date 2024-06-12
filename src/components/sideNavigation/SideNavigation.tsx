@@ -1,14 +1,13 @@
 import clsx from "clsx";
 import useSmoothScroll from "../../hooks/useSmoothScroll";
 import { motion } from "framer-motion";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface SideNavigationProps {
   activeIndex: number;
-  setActiveIndex: Dispatch<SetStateAction<number>>;
 }
 
-function SideNavigation({ activeIndex, setActiveIndex }: SideNavigationProps) {
+function SideNavigation({ activeIndex }: SideNavigationProps) {
   const { smoothScroll } = useSmoothScroll();
   const [animationEnd, setAnimationEnd] = useState(false);
 
@@ -16,11 +15,10 @@ function SideNavigation({ activeIndex, setActiveIndex }: SideNavigationProps) {
     0: "initial-screen",
     1: "tech-stacks",
     2: "projects",
+    3: "final-screen",
   };
 
   const handleButtonClick = (index: number) => {
-    setActiveIndex(index);
-
     if (scrollTargetsMap[index]) {
       smoothScroll(scrollTargetsMap[index]);
     }

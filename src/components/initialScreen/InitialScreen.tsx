@@ -1,24 +1,48 @@
 import { FaArrowDown } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import { MyPhoto } from "../../assets/images";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import useSmoothScroll from "../../hooks/useSmoothScroll";
 import clsx from "clsx";
 import useSidebarAnimation from "../../hooks/useSidebarAnimation";
 
 interface InitialScreenProps {
+  activeIndex: number;
   setActiveIndex: Dispatch<SetStateAction<number>>;
 }
 
-export default function InitialScreen({ setActiveIndex }: InitialScreenProps) {
+export default function InitialScreen({
+  activeIndex,
+  setActiveIndex,
+}: InitialScreenProps) {
   const [isHoveredIcon, setIsHoveredIcon] = useState(false);
   const { smoothScroll } = useSmoothScroll();
   const { ref } = useSidebarAnimation({ activeIndex: 0, setActiveIndex });
+  const [animationEnd, setAnimationEnd] = useState(false);
+  const [hideIcon, setHideIcon] = useState(false);
 
   const hancleClickDownIcon = () => {
     smoothScroll("tech-stacks");
     setIsHoveredIcon(false);
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setAnimationEnd(true);
+    }, 2250);
+  }, []);
+
+  useEffect(() => {
+    if (animationEnd) {
+      if (activeIndex === 1) {
+        setTimeout(() => {
+          setHideIcon(true);
+        }, 500);
+      } else if (activeIndex === 0 && hideIcon) {
+        setHideIcon(false);
+      }
+    }
+  }, [activeIndex, animationEnd, hideIcon]);
 
   return (
     <div
@@ -66,21 +90,26 @@ export default function InitialScreen({ setActiveIndex }: InitialScreenProps) {
         </section>
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2.25, duration: 0.5 }}
-          className="2xl:absolute 2xl:left-1/2 2xl:-translate-x-1/2 2xl:bottom-0 2xl:translate-y-[150%]"
+          animate={{ opacity: activeIndex === 0 ? 1 : 0 }}
+          transition={{
+            delay: activeIndex === 0 ? (animationEnd ? 0 : 2.25) : 0,
+            duration: 0.5,
+          }}
+          className="2xl:absolute h-9 2xl:left-1/2 2xl:-translate-x-1/2 2xl:bottom-0 2xl:translate-y-[150%]"
         >
-          <FaArrowDown
-            size={36}
-            fill={isHoveredIcon ? "#1b1b1e" : "white"}
-            onMouseEnter={() => setIsHoveredIcon(true)}
-            onMouseLeave={() => setIsHoveredIcon(false)}
-            onClick={hancleClickDownIcon}
-            className={clsx(
-              "cursor-pointer p-2 border-2 transition-all duration-300 rounded-full",
-              isHoveredIcon && "bg-silver"
-            )}
-          />
+          {!hideIcon && (
+            <FaArrowDown
+              size={36}
+              fill={isHoveredIcon ? "#1b1b1e" : "white"}
+              onMouseEnter={() => setIsHoveredIcon(true)}
+              onMouseLeave={() => setIsHoveredIcon(false)}
+              onClick={hancleClickDownIcon}
+              className={clsx(
+                "cursor-pointer p-2 border-2 transition-all duration-300 rounded-full",
+                isHoveredIcon && "bg-silver"
+              )}
+            />
+          )}
         </motion.div>
       </section>
     </div>

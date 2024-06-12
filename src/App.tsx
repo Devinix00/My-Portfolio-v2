@@ -5,6 +5,7 @@ import WhiteSpaceContainer from "./components/containers/WhiteSpaceContainer";
 import { motion, useScroll, useSpring } from "framer-motion";
 import SideNavigation from "./components/sideNavigation/SideNavigation";
 import Projects from "./components/projects/Projects";
+import FinalScreen from "./components/finalScreen/FinalScreen";
 
 function App() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -22,15 +23,16 @@ function App() {
           className="z-50 origin-top-left sticky top-0 h-1 bg-red"
           style={{ scaleX }}
         />
-        <SideNavigation
+        <SideNavigation activeIndex={activeIndex} />
+        <InitialScreen
           activeIndex={activeIndex}
           setActiveIndex={setActiveIndex}
         />
-        <InitialScreen setActiveIndex={setActiveIndex} />
         <WhiteSpaceContainer>
           <TechStacks setActiveIndex={setActiveIndex} />
           <Projects setActiveIndex={setActiveIndex} />
         </WhiteSpaceContainer>
+        <FinalScreen setActiveIndex={setActiveIndex} />
       </div>
     </React.Fragment>
   );
