@@ -23,7 +23,7 @@ export default function useSidebarAnimation({
           }
         },
         {
-          threshold: mobileOrTablet ? 0.4 : 0.6,
+          threshold: mobileOrTablet ? 0.35585 : 0.6,
         }
       );
 
