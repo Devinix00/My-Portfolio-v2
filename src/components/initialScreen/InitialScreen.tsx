@@ -61,7 +61,7 @@ export default function InitialScreen({ setActiveIndex }: InitialScreenProps) {
             열정을 가지고 있는 프론트엔드 개발자입니다. 주로 React와 Next.js를
             사용하며, Typescript와 SCSS, TailwindCSS를 통해 반응형 디자인을
             구현합니다. 클린 코드를 작성하는 것과 컴포넌트 및 커스텀 훅의
-            재사용성과 확장성을 높이는 것을 중요하게 생각합니다.
+            재사용성을 높이는 것을 중요하게 생각합니다.
           </motion.p>
         </section>
         <motion.div

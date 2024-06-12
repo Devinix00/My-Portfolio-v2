@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { techStacks } from "../../constants/techStacks";
 import { Dispatch, SetStateAction, useRef } from "react";
 import useSidebarAnimation from "../../hooks/useSidebarAnimation";
+import Title from "../title/Title";
 
 interface TechStacksProps {
   setActiveIndex: Dispatch<SetStateAction<number>>;
@@ -16,11 +17,11 @@ export default function TechStacks({ setActiveIndex }: TechStacksProps) {
   });
 
   return (
-    <div ref={divRef} id="tech-stacks" className="min-h-[100vh] pt-10">
-      <h2 className="text-3xl font-bold text-center mb-10">Tech Stacks</h2>
+    <div ref={divRef} id="tech-stacks" className="min-h-[100vh] pt-20">
+      <Title>Tech Stacks</Title>
       <div
         ref={ref}
-        className="mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4"
+        className="mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
       >
         {techStacks.map((stack, i) => (
           <motion.div

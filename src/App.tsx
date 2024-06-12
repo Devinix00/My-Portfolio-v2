@@ -4,6 +4,7 @@ import TechStacks from "./components/techStacks/TechStacks";
 import WhiteSpaceContainer from "./components/containers/WhiteSpaceContainer";
 import { motion, useScroll, useSpring } from "framer-motion";
 import SideNavigation from "./components/sideNavigation/SideNavigation";
+import Projects from "./components/projects/Projects";
 
 function App() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -28,6 +29,7 @@ function App() {
         <InitialScreen setActiveIndex={setActiveIndex} />
         <WhiteSpaceContainer>
           <TechStacks setActiveIndex={setActiveIndex} />
+          <Projects setActiveIndex={setActiveIndex} />
         </WhiteSpaceContainer>
       </div>
     </React.Fragment>

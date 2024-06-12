@@ -35,7 +35,5 @@ export default function useSidebarAnimation({
     }
   }, [ref, activeIndex, setActiveIndex, device, mobileOrTablet]);
 
-  console.log(activeIndex);
-
   return { ref };
 }

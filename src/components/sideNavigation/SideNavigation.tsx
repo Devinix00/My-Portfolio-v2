@@ -13,15 +13,18 @@ function SideNavigation({ activeIndex, setActiveIndex }: SideNavigationProps) {
   const [animationEnd, setAnimationEnd] = useState(false);
 
   const handleButtonClick = (index: number) => {
+    setActiveIndex(index);
     switch (index) {
       case 0:
-        setActiveIndex(0);
         smoothScroll("initial-screen");
         return;
 
       case 1:
-        setActiveIndex(1);
         smoothScroll("tech-stacks");
+        return;
+
+      case 2:
+        smoothScroll("projects");
         return;
 
       default:

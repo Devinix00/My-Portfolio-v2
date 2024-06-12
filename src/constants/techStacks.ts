@@ -32,7 +32,7 @@ export const techStacks = [
   {
     title: "RTK (Redux Toolkit)",
     description:
-      "Redux Toolkit을 사용하여 복잡한 상태 관리를 단순화할 수 있습니다. 미들웨어, RTK Query 다양한 기능을 통하여 서버/클라이언트 상태 관리가 가능합니다.",
+      "Redux Toolkit을 사용하여 복잡한 상태 관리를 단순화할 수 있습니다. 미들웨어, RTK Query 등 다양한 기능을 통하여 서버/클라이언트 상태 관리가 가능합니다.",
   },
   {
     title: "tailwindcss",
