@@ -1,13 +1,19 @@
 import { FaArrowDown } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import { MyPhoto } from "../../assets/images";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import useSmoothScroll from "../../hooks/useSmoothScroll";
 import clsx from "clsx";
+import useSidebarAnimation from "../../hooks/useSidebarAnimation";
 
-export default function InitialScreen() {
+interface InitialScreenProps {
+  setActiveIndex: Dispatch<SetStateAction<number>>;
+}
+
+export default function InitialScreen({ setActiveIndex }: InitialScreenProps) {
   const [isHoveredIcon, setIsHoveredIcon] = useState(false);
   const { smoothScroll } = useSmoothScroll();
+  const { ref } = useSidebarAnimation({ activeIndex: 0, setActiveIndex });
 
   const hancleClickDownIcon = () => {
     smoothScroll("tech-stacks");
@@ -15,7 +21,11 @@ export default function InitialScreen() {
   };
 
   return (
-    <div className="relative w-full min-h-[100vh] bg-white flex items-center justify-center">
+    <div
+      ref={ref}
+      id="initial-screen"
+      className="relative w-full min-h-[100vh] bg-white flex items-center justify-center"
+    >
       <motion.div
         initial={{ clipPath: "circle(0% at 50% 50%)" }}
         animate={{ clipPath: "circle(150% at 50% 50%)" }}
@@ -26,7 +36,7 @@ export default function InitialScreen() {
       <section className="flex-col justify-between 2xl:flex-row items-center w-[calc(100%-80px)] md:w-[calc(100%-160px)] flex 2xl:top-auto absolute top-1/2 -translate-y-1/2 2xl:translate-y-0 gap-4 2xl:left-20 2xl:bottom-20 z-10 rounded-2xl">
         <motion.img
           initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 0.9, y: 0 }}
           transition={{ delay: 0.75, duration: 0.5 }}
           src={MyPhoto}
           alt="나"
@@ -37,7 +47,7 @@ export default function InitialScreen() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.25, duration: 0.5 }}
-            className="pb-2 text-center font-bold 2xl:text-left border-b-2 2xl:text-3xl text-2xl w-full"
+            className="pb-2 text-center font-bold whitespace-nowrap 2xl:text-left border-b-2 2xl:text-3xl text-2xl w-full"
           >
             Front-End Developer 김범수
           </motion.p>
@@ -67,7 +77,7 @@ export default function InitialScreen() {
             onMouseLeave={() => setIsHoveredIcon(false)}
             onClick={hancleClickDownIcon}
             className={clsx(
-              "cursor-pointer p-2 border-2 rounded-full",
+              "cursor-pointer p-2 border-2 transition-all duration-300 rounded-full",
               isHoveredIcon && "bg-silver"
             )}
           />
