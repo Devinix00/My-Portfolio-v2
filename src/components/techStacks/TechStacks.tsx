@@ -17,7 +17,7 @@ export default function TechStacks({ setActiveIndex }: TechStacksProps) {
   });
 
   return (
-    <div ref={divRef} id="tech-stacks" className="min-h-[100vh] mt-20">
+    <div ref={divRef} id="tech-stacks" className="min-h-[100vh] pt-20">
       <Title>Tech Stacks</Title>
       <div
         ref={ref}

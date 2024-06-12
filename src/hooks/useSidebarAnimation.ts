@@ -12,7 +12,14 @@ export default function useSidebarAnimation({
 }: useSidebarAnimationProps) {
   const { device } = useDevice();
   const ref = useRef<HTMLDivElement>(null);
-  const mobileOrTablet = device !== "2xl";
+  const thresholdMap: { [device: string]: number } = {
+    sm: 0.35,
+    md: 0.4,
+    lg: 0.5,
+    "2xl": 0.6,
+  };
+
+  const threshold = thresholdMap[device as Device];
 
   useEffect(() => {
     if (ref.current) {
@@ -23,7 +30,7 @@ export default function useSidebarAnimation({
           }
         },
         {
-          threshold: mobileOrTablet ? 0.35585 : 0.6,
+          threshold: threshold,
         }
       );
 
@@ -33,7 +40,7 @@ export default function useSidebarAnimation({
         intersectionObserver.disconnect();
       };
     }
-  }, [ref, activeIndex, setActiveIndex, device, mobileOrTablet]);
+  }, [ref, activeIndex, setActiveIndex, device, threshold]);
 
   return { ref };
 }

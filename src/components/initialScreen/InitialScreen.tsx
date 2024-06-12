@@ -57,7 +57,7 @@ export default function InitialScreen({
         className="absolute flex items-center top-0 left-0 w-full h-full bg-black"
       />
       /
-      <section className="flex-col justify-between 2xl:flex-row items-center w-[calc(100%-80px)] md:w-[calc(100%-160px)] flex 2xl:top-auto absolute top-1/2 -translate-y-1/2 2xl:translate-y-0 gap-4 2xl:left-20 2xl:bottom-20 z-10 rounded-2xl">
+      <section className="flex-col justify-between 2xl:flex-row items-center w-[calc(100%-80px)] md:w-[calc(100%-160px)] 2xl:w-[1200px] flex 2xl:top-auto absolute 2xl:relative 2xl:mx-auto top-1/2 -translate-y-1/2 2xl:translate-y-0 gap-4 z-10 translate-x-0 rounded-2xl">
         <motion.img
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 0.9, y: 0 }}

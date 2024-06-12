@@ -52,7 +52,7 @@ function SideNavigation({ activeIndex }: SideNavigationProps) {
                 : i === 0
                 ? { delay: activeIndex === 0 ? 2.85 : 0, duration: 0.2 }
                 : {
-                    delay: activeIndex === 0 ? 0.4 * i + 2.85 : 0.4 * i,
+                    delay: activeIndex === 0 ? 0.275 * i + 2.85 : 0.4 * i,
                     duration: 0.2,
                   }
             }

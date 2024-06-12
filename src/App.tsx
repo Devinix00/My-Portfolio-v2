@@ -3,7 +3,7 @@ import InitialScreen from "./components/initialScreen/InitialScreen";
 import TechStacks from "./components/techStacks/TechStacks";
 import WhiteSpaceContainer from "./components/containers/WhiteSpaceContainer";
 import { motion, useScroll, useSpring } from "framer-motion";
-import SideNavigation from "./components/sideNavigation/SideNavigation";
+// import SideNavigation from "./components/sideNavigation/SideNavigation";
 import Projects from "./components/projects/Projects";
 import FinalScreen from "./components/finalScreen/FinalScreen";
 
@@ -23,7 +23,7 @@ function App() {
           className="z-50 origin-top-left sticky top-0 h-1 bg-red"
           style={{ scaleX }}
         />
-        <SideNavigation activeIndex={activeIndex} />
+        {/* <SideNavigation activeIndex={activeIndex} /> */}
         <InitialScreen
           activeIndex={activeIndex}
           setActiveIndex={setActiveIndex}
@@ -31,8 +31,8 @@ function App() {
         <WhiteSpaceContainer>
           <TechStacks setActiveIndex={setActiveIndex} />
           <Projects setActiveIndex={setActiveIndex} />
+          <FinalScreen setActiveIndex={setActiveIndex} />
         </WhiteSpaceContainer>
-        <FinalScreen setActiveIndex={setActiveIndex} />
       </div>
     </React.Fragment>
   );
