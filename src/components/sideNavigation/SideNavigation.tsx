@@ -12,31 +12,29 @@ function SideNavigation({ activeIndex, setActiveIndex }: SideNavigationProps) {
   const { smoothScroll } = useSmoothScroll();
   const [animationEnd, setAnimationEnd] = useState(false);
 
+  const scrollTargetsMap: { [key: number]: string } = {
+    0: "initial-screen",
+    1: "tech-stacks",
+    2: "projects",
+  };
+
   const handleButtonClick = (index: number) => {
     setActiveIndex(index);
-    switch (index) {
-      case 0:
-        smoothScroll("initial-screen");
-        return;
 
-      case 1:
-        smoothScroll("tech-stacks");
-        return;
-
-      case 2:
-        smoothScroll("projects");
-        return;
-
-      default:
-        return;
+    if (scrollTargetsMap[index]) {
+      smoothScroll(scrollTargetsMap[index]);
     }
   };
 
   useEffect(() => {
-    setTimeout(() => {
+    if (activeIndex === 0) {
+      setTimeout(() => {
+        setAnimationEnd(true);
+      }, 4750);
+    } else {
       setAnimationEnd(true);
-    }, 4750);
-  }, []);
+    }
+  }, [activeIndex]);
 
   return (
     <div className="fixed z-50 2xl:right-10 2xl:top-32 right-[24px] top-20 transform -translate-y-1/2 gap-4 flex flex-col">
@@ -54,8 +52,11 @@ function SideNavigation({ activeIndex, setActiveIndex }: SideNavigationProps) {
               animationEnd
                 ? { delay: 0, duration: 0.2 }
                 : i === 0
-                ? { delay: 2.85, duration: 0.2 }
-                : { delay: 0 + 0.4 * i + 2.85, duration: 0.2 }
+                ? { delay: activeIndex === 0 ? 2.85 : 0, duration: 0.2 }
+                : {
+                    delay: activeIndex === 0 ? 0.4 * i + 2.85 : 0.4 * i,
+                    duration: 0.2,
+                  }
             }
             key={i}
             className={clsx(
