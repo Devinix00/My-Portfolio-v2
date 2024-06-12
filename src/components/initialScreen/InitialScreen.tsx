@@ -9,20 +9,19 @@ export default function InitialScreen() {
   const { smoothScroll } = useSmoothScroll();
 
   return (
-    <div className="relative w-full overflow-y-hidden overflow-x-hidden min-h-[100vh] bg-white flex items-center justify-center">
+    <div className="relative w-full min-h-[100vh] bg-white flex items-center justify-center">
       <motion.div
         initial={{ clipPath: "circle(0% at 50% 50%)" }}
         animate={{ clipPath: "circle(150% at 50% 50%)" }}
-        transition={{ delay: 0.5, duration: 2 }}
-        style={{ transformOrigin: "center" }}
-        className="absolute top-0 left-0 w-full h-full bg-black"
+        transition={{ delay: 0.1, duration: 2 }}
+        className="absolute flex items-center top-0 left-0 w-full h-full bg-black"
       />
       /
-      <section className="flex-col justify-between 2xl:flex-row items-center w-[calc(100%-80px)] md:w-[calc(100%-160px)] flex 2xl:top-auto absolute gap-4 2xl:left-20 2xl:bottom-20 z-10 rounded-2xl">
+      <section className="flex-col justify-between 2xl:flex-row items-center w-[calc(100%-80px)] md:w-[calc(100%-160px)] flex 2xl:top-auto absolute top-1/2 -translate-y-1/2 2xl:translate-y-0 gap-4 2xl:left-20 2xl:bottom-20 z-10 rounded-2xl">
         <motion.img
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.25, duration: 0.5 }}
+          transition={{ delay: 0.75, duration: 0.5 }}
           src={MyPhoto}
           alt="나"
           className="min-w-[320px] w-[320px] h-[320px] min-h-[320px] lg:w-[480px] lg:h-[480px] md:min-w-[400px] md:min-h-[400px] 2xl:min-w-[540px] 2xl:min-h-[540px]"
@@ -31,7 +30,7 @@ export default function InitialScreen() {
           <motion.p
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.75, duration: 0.5 }}
+            transition={{ delay: 1.25, duration: 0.5 }}
             className="pb-2 text-center 2xl:text-left border-b-2 2xl:text-3xl text-2xl w-full"
           >
             Front-End Developer 김범수
@@ -39,7 +38,7 @@ export default function InitialScreen() {
           <motion.p
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 2.25, duration: 0.5 }}
+            transition={{ delay: 1.75, duration: 0.5 }}
             className="w-full text-md text-center 2xl:text-left"
           >
             안녕하세요! 저는 모던 프레임워크와 라이브러리를 활용한 웹 개발에
@@ -52,7 +51,8 @@ export default function InitialScreen() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 2.75, duration: 0.5 }}
+          transition={{ delay: 2.25, duration: 0.5 }}
+          className="2xl:absolute 2xl:left-1/2 2xl:-translate-x-1/2 2xl:bottom-0 2xl:translate-y-[150%]"
         >
           <FaArrowDown
             size={36}
@@ -60,25 +60,10 @@ export default function InitialScreen() {
             onMouseEnter={() => setIsHoveredIcon(true)}
             onMouseLeave={() => setIsHoveredIcon(false)}
             onClick={() => smoothScroll("tech-stacks")}
-            className="absolute -bottom-[20px] left-1/2 hover:bg-silver cursor-pointer -translate-x-1/2 p-2 translate-y-[100%] border-2 rounded-full"
+            className="hover:bg-silver cursor-pointer p-2 border-2 rounded-full"
           />
         </motion.div>
       </section>
     </div>
   );
 }
-
-// import { motion } from "framer-motion";
-
-// export default function InitialScreen() {
-//   return (
-//     <div className="relative w-full min-h-[100vh]">
-//       <motion.div
-//         initial={{ clipPath: "circle(0% at 50% 50%)" }}
-//         animate={{ clipPath: "circle(150% at 50% 50%)" }}
-//         transition={{ delay: 0.5, duration: 2 }}
-//         className="absolute top-0 left-0 w-full h-full bg-black"
-//       />
-//     </div>
-//   );
-// }
