@@ -13,7 +13,7 @@ export default function Projects({ setActiveIndex }: ProjectsProps) {
   });
 
   return (
-    <div ref={ref} id="projects" className="min-h-[100vh] pt-20">
+    <div ref={ref} id="projects" className="min-h-[100vh] 3xl:min-h-fit pt-20">
       <Title>Projects</Title>
     </div>
   );
