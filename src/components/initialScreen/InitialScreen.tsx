@@ -11,13 +11,13 @@ export default function InitialScreen() {
   return (
     <div className="relative w-full overflow-y-hidden overflow-x-hidden min-h-[100vh] bg-white flex items-center justify-center">
       <motion.div
-        className="bg-black w-[1vw] h-[1vw] rounded-full aspect-w-1 aspect-h-1"
-        initial={{ scale: 0 }}
-        animate={{ scale: 300 }}
-        transition={{ delay: 0.5, duration: 1, ease: "easeIn" }}
+        initial={{ clipPath: "circle(0% at 50% 50%)" }}
+        animate={{ clipPath: "circle(150% at 50% 50%)" }}
+        transition={{ delay: 0.5, duration: 2 }}
         style={{ transformOrigin: "center" }}
+        className="absolute top-0 left-0 w-full h-full bg-black"
       />
-
+      /
       <section className="flex-col justify-between 2xl:flex-row items-center w-[calc(100%-80px)] md:w-[calc(100%-160px)] flex 2xl:top-auto absolute gap-4 2xl:left-20 2xl:bottom-20 z-10 rounded-2xl">
         <motion.img
           initial={{ opacity: 0, y: -10 }}
@@ -67,3 +67,18 @@ export default function InitialScreen() {
     </div>
   );
 }
+
+// import { motion } from "framer-motion";
+
+// export default function InitialScreen() {
+//   return (
+//     <div className="relative w-full min-h-[100vh]">
+//       <motion.div
+//         initial={{ clipPath: "circle(0% at 50% 50%)" }}
+//         animate={{ clipPath: "circle(150% at 50% 50%)" }}
+//         transition={{ delay: 0.5, duration: 2 }}
+//         className="absolute top-0 left-0 w-full h-full bg-black"
+//       />
+//     </div>
+//   );
+// }
