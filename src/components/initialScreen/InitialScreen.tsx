@@ -3,10 +3,16 @@ import { motion } from "framer-motion";
 import { MyPhoto } from "../../assets/images";
 import { useState } from "react";
 import useSmoothScroll from "../../hooks/useSmoothScroll";
+import clsx from "clsx";
 
 export default function InitialScreen() {
   const [isHoveredIcon, setIsHoveredIcon] = useState(false);
   const { smoothScroll } = useSmoothScroll();
+
+  const hancleClickDownIcon = () => {
+    smoothScroll("tech-stacks");
+    setIsHoveredIcon(false);
+  };
 
   return (
     <div className="relative w-full min-h-[100vh] bg-white flex items-center justify-center">
@@ -31,7 +37,7 @@ export default function InitialScreen() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.25, duration: 0.5 }}
-            className="pb-2 text-center 2xl:text-left border-b-2 2xl:text-3xl text-2xl w-full"
+            className="pb-2 text-center font-bold 2xl:text-left border-b-2 2xl:text-3xl text-2xl w-full"
           >
             Front-End Developer 김범수
           </motion.p>
@@ -59,8 +65,11 @@ export default function InitialScreen() {
             fill={isHoveredIcon ? "#1b1b1e" : "white"}
             onMouseEnter={() => setIsHoveredIcon(true)}
             onMouseLeave={() => setIsHoveredIcon(false)}
-            onClick={() => smoothScroll("tech-stacks")}
-            className="hover:bg-silver cursor-pointer p-2 border-2 rounded-full"
+            onClick={hancleClickDownIcon}
+            className={clsx(
+              "cursor-pointer p-2 border-2 rounded-full",
+              isHoveredIcon && "bg-silver"
+            )}
           />
         </motion.div>
       </section>
