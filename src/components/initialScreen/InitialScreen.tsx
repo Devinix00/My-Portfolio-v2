@@ -57,21 +57,21 @@ export default function InitialScreen({
         className="absolute flex items-center top-0 left-0 w-full h-full bg-black"
       />
       /
-      <section className="flex-col justify-between 2xl:flex-row items-center w-[calc(100%-80px)] md:w-[calc(100%-160px)] 2xl:w-[1200px] flex 2xl:top-auto absolute 2xl:relative 2xl:mx-auto top-1/2 -translate-y-1/2 2xl:translate-y-0 gap-4 z-10 translate-x-0 rounded-2xl">
+      <section className="flex-col justify-between xl:flex-row items-center w-[calc(100%-80px)] md:w-[calc(100%-160px)] xl:w-[1200px] flex xl:top-auto absolute xl:relative xl:mx-auto top-1/2 -translate-y-1/2 xl:translate-y-0 gap-4 z-10 translate-x-0 rounded-xl">
         <motion.img
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 0.9, y: 0 }}
           transition={{ delay: 0.75, duration: 0.5 }}
           src={MyPhoto}
           alt="나"
-          className="min-w-[320px] w-[320px] h-[320px] min-h-[320px] lg:w-[480px] lg:h-[480px] md:min-w-[400px] md:min-h-[400px] 2xl:min-w-[540px] 2xl:min-h-[540px]"
+          className="min-w-[320px] w-[320px] h-[320px] min-h-[320px] lg:w-[480px] lg:h-[480px] md:min-w-[400px] md:min-h-[400px] xl:min-w-[540px] xl:min-h-[540px]"
         />
         <section className="mt-auto flex w-full flex-col gap-4">
           <motion.p
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.25, duration: 0.5 }}
-            className="pb-2 text-center font-bold whitespace-nowrap 2xl:text-left border-b-2 2xl:text-3xl text-2xl w-full"
+            className="pb-2 text-center font-bold whitespace-nowrap xl:text-left border-b-2 xl:text-3xl text-xl w-full"
           >
             Front-End Developer 김범수
           </motion.p>
@@ -79,7 +79,7 @@ export default function InitialScreen({
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.75, duration: 0.5 }}
-            className="w-full text-md text-center 2xl:text-left"
+            className="w-full text-md text-center xl:text-left"
           >
             안녕하세요! 저는 모던 프레임워크와 라이브러리를 활용한 웹 개발에
             열정을 가지고 있는 프론트엔드 개발자입니다. 주로 React와 Next.js를
@@ -95,7 +95,7 @@ export default function InitialScreen({
             delay: activeIndex === 0 ? (animationEnd ? 0 : 2.25) : 0,
             duration: 0.5,
           }}
-          className="2xl:absolute h-9 2xl:left-1/2 2xl:-translate-x-1/2 2xl:bottom-0 2xl:translate-y-[150%]"
+          className="xl:absolute h-9 xl:left-1/2 xl:-translate-x-1/2 xl:bottom-0 xl:translate-y-[150%]"
         >
           {!hideIcon && (
             <FaArrowDown
