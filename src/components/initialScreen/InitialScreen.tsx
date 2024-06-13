@@ -1,6 +1,6 @@
 import { FaArrowDown } from "react-icons/fa6";
 import { motion } from "framer-motion";
-import { MyPhoto } from "../../assets/images";
+import { MyPhoto } from "../../../public/images";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import useSmoothScroll from "../../hooks/useSmoothScroll";
 import clsx from "clsx";

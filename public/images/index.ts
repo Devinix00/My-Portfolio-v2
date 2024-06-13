@@ -1,0 +1,10 @@
+export { default as MyPhoto } from "./my_photo.png";
+export { default as ReactLogo } from "./react.png";
+export { default as NextJsLogo } from "./next_js.png";
+export { default as TypescriptLogo } from "./typescript.png";
+export { default as AxiosLogo } from "./axios.png";
+export { default as ReactQueryLogo } from "./react_query.png";
+export { default as ZustandLogo } from "./zustand.png";
+export { default as RTKLogo } from "./RTK.png";
+export { default as TailwindLogo } from "./tailwind.png";
+export { default as SCSSLogo } from "./SCSS.png";
