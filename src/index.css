@@ -26,5 +26,5 @@ html {
 }
 
 * {
-  backface-visibility: hidden;
+  perspective: 750px;
 }
