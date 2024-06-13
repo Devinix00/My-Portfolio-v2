@@ -60,7 +60,7 @@ export default function InitialScreen({
       <section className="flex-col justify-between xl:flex-row items-center w-[calc(100%-80px)] md:w-[calc(100%-160px)] xl:w-[1200px] flex xl:top-auto absolute xl:relative xl:mx-auto top-1/2 -translate-y-1/2 xl:translate-y-0 gap-4 z-10 translate-x-0 rounded-xl">
         <motion.img
           initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 0.9, y: 0 }}
+          animate={{ opacity: 0.8, y: 0 }}
           transition={{ delay: 0.75, duration: 0.5 }}
           src="/images/my_photo.png"
           alt="나"
