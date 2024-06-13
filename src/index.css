@@ -10,3 +10,21 @@
 html {
   background-color: #1b1b1b;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+* {
+  backface-visibility: hidden;
+}
