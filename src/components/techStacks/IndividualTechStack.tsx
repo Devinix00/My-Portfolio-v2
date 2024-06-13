@@ -15,7 +15,6 @@ export default function IndividualTechStack({
   techStack,
 }: TechStackProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  console.log(hoveredIndex);
 
   return (
     <div

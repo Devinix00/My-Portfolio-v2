@@ -1,6 +1,6 @@
 import { FaArrowDown } from "react-icons/fa6";
 import { motion } from "framer-motion";
-import { MyPhoto } from "../../../public/images";
+
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import useSmoothScroll from "../../hooks/useSmoothScroll";
 import clsx from "clsx";
@@ -62,7 +62,7 @@ export default function InitialScreen({
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 0.9, y: 0 }}
           transition={{ delay: 0.75, duration: 0.5 }}
-          src={MyPhoto}
+          src="/images/my_photo.png"
           alt="나"
           className="min-w-[320px] w-[320px] h-[320px] min-h-[320px] lg:w-[480px] lg:h-[480px] md:min-w-[400px] md:min-h-[400px] xl:min-w-[540px] xl:min-h-[540px]"
         />
