@@ -17,7 +17,7 @@ export default function ProjectOutline({ modalIndex }: ProjectOutlineProps) {
     if (modalIndex !== null) {
       const timer = setTimeout(() => {
         setShouldLoadImage(true);
-      }, 750);
+      }, 500);
 
       return () => clearTimeout(timer);
     }
@@ -33,14 +33,17 @@ export default function ProjectOutline({ modalIndex }: ProjectOutlineProps) {
           <div
             className={clsx(
               "rounded-2xl overflow-hidden",
-              modalIndex === 1 || modalIndex === 3
-                ? "w-[220px] h-[400px]"
+              modalIndex === 1
+                ? shouldLoadImage && "w-[220px]"
                 : "md:w-[688px] md:h-[390px]"
             )}
           >
             {modalIndex !== null &&
               (shouldLoadImage ? (
-                <img src={projectDetails[modalIndex].imgSrc} alt="" />
+                <img
+                  src={projectDetails[modalIndex].imgSrc}
+                  alt={projectDetails[modalIndex].title}
+                />
               ) : (
                 <div className="w-full h-full">
                   {device === "sm" ? (
