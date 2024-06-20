@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import useRotateTechStack from "../../hooks/useRotateTechStack";
 
 interface TechStackProps {
   inView: boolean;
@@ -14,13 +14,15 @@ export default function IndividualTechStack({
   i,
   techStack,
 }: TechStackProps) {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const { hoveredIndex, handleMouseEnter, handleMouseLeave, handleClick } =
+    useRotateTechStack(i);
 
   return (
     <div
-      onMouseEnter={() => setHoveredIndex(i)}
-      onMouseLeave={() => setHoveredIndex(null)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       className="relative h-[212px] perspective-1000"
+      onClick={handleClick}
     >
       <motion.div
         key={i}
@@ -39,7 +41,11 @@ export default function IndividualTechStack({
         style={{ transformStyle: "preserve-3d" }}
       >
         <div className="bg-gray p-6 h-full rounded-3xl shadow-lg absolute w-full flex items-center justify-center">
-          <img src={techStack.imgSrc} alt="" className="w-40 pt-[auto]" />
+          <img
+            src={techStack.imgSrc}
+            alt={techStack.title}
+            className="w-40 pt-[auto]"
+          />
         </div>
         <div
           className="bg-gray text-white p-6 h-full rounded-3xl shadow-lg absolute inset-0 flex items-center justify-center"

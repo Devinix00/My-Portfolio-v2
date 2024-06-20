@@ -8,13 +8,13 @@ export const techStacks = [
   {
     title: "Next.Js",
     description:
-      "App router를 이용하여 서버 사이드 렌더링 기반의 웹 애플리케이션을 개발할 수 있습니다. 서버 컴포넌트, 클라이언트 컴포넌트를 구분하여 효과적인 컴포넌트 설계를 위해 노력합니다.",
+      "App router를 이용하여 서버 사이드 렌더링 기반의 웹을 개발할 수 있습니다. 서버 컴포넌트, 클라이언트 컴포넌트를 구분하여 효과적인 컴포넌트 설계를 위해 노력합니다.",
     imgSrc: "/images/next_js.png",
   },
   {
     title: "TypeScript",
     description:
-      "TypeScript를 사용하여 타입 안정성을 보장하고, 코드의 가독성과 유지보수성을 높일 수 있습니다. 타입 시스템을 통해 런타임 에러를 줄이고, 데이터를 효율적으로 처리하려 노력합니다.",
+      "TypeScript를 사용하여 타입 안정성을 보장하고, 코드의 유지보수성을 높일 수 있습니다. 타입 시스템을 통해 런타임 에러를 줄이고, 데이터를 효율적으로 처리하려 노력합니다.",
     imgSrc: "/images/typescript.png",
   },
   {
