@@ -8,6 +8,7 @@ export default {
         silver: "#c7c7c7",
         gray: "#373737",
         red: "#ff4d4f",
+        orange: "#FE7211",
       },
       screens: {
         sm: "640px",

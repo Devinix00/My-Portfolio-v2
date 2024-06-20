@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import ProjectModalHeader from "./ProjectModalHeader";
+import { useState } from "react";
+import ProjectModalContents from "./projectModalContents/ProjectModalContents";
 
 interface ProjectModalProps {
   modalIndex: number | null;
@@ -10,7 +12,7 @@ export default function ProjectModal({
   modalIndex,
   setIsModalOpened,
 }: ProjectModalProps) {
-  console.log(modalIndex);
+  const [activeTabIndex, setActiveTabIndex] = useState(0);
 
   return (
     <motion.div
@@ -20,7 +22,10 @@ export default function ProjectModal({
       transition={{ type: "tween" }}
       className="fixed z-50 overflow-y-auto bg-white hide-scrollbar inset-0 w-full"
     >
-      <ProjectModalHeader setIsModalOpened={setIsModalOpened} />
+      <ProjectModalHeader
+        {...{ activeTabIndex, setActiveTabIndex, modalIndex, setIsModalOpened }}
+      />
+      <ProjectModalContents {...{ activeTabIndex, modalIndex }} />
     </motion.div>
   );
 }
