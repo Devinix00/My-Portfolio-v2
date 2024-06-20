@@ -1,15 +1,19 @@
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import useSidebarAnimation from "../../hooks/useSidebarAnimation";
 import Title from "../title/Title";
-import IndividualProject from "./individualProject/IndividualProject";
+import IndividualProject from "./IndividualProject";
 import { projects } from "../../constants/projects";
-import { useInView } from "framer-motion";
+import { AnimatePresence, useInView } from "framer-motion";
+import ProjectModal from "./projectModal/ProjectModal";
+import { useModalStore } from "../../stores/useModalStore";
 
 interface ProjectsProps {
   setActiveIndex: Dispatch<SetStateAction<number>>;
 }
 
 export default function Projects({ setActiveIndex }: ProjectsProps) {
+  const [modalIndex, setModalIndex] = useState<number | null>(null);
+  const { isModalOpened, setIsModalOpened } = useModalStore();
   const { ref: containerRef } = useSidebarAnimation({
     activeIndex: 2,
     setActiveIndex,
@@ -31,18 +35,40 @@ export default function Projects({ setActiveIndex }: ProjectsProps) {
   }, [inView]);
 
   return (
-    <div
-      ref={containerRef}
-      id="projects"
-      className="min-h-[100vh] 3xl:min-h-fit pt-20"
-    >
-      <Title>Projects</Title>
+    <>
+      <div
+        ref={containerRef}
+        id="projects"
+        className="min-h-[100vh] 3xl:min-h-fit pt-20"
+      >
+        <Title>Projects</Title>
 
-      <div ref={contentsRef} className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {projects.map((project, i) => (
-          <IndividualProject {...{ project, i, inView, animationEnd }} />
-        ))}
+        <div
+          ref={contentsRef}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+        >
+          {projects.map((project, i) => (
+            <IndividualProject
+              {...{
+                project,
+                i,
+                inView,
+                animationEnd,
+                setIsModalOpened,
+                setModalIndex,
+              }}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+      <AnimatePresence>
+        {isModalOpened && (
+          <ProjectModal
+            modalIndex={modalIndex}
+            setIsModalOpened={setIsModalOpened}
+          />
+        )}
+      </AnimatePresence>
+    </>
   );
 }

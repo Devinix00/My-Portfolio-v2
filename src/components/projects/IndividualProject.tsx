@@ -1,11 +1,14 @@
 import { motion } from "framer-motion";
-import useHoveredIndex from "../../../hooks/useHoveredIndex";
+import useHoveredIndex from "../../hooks/useHoveredIndex";
+import { Dispatch, SetStateAction } from "react";
 
 interface IndividualProjectProps {
   project: Project;
   i: number;
   inView: boolean;
   animationEnd: boolean;
+  setIsModalOpened: (modalState: boolean) => void;
+  setModalIndex: Dispatch<SetStateAction<number | null>>;
 }
 
 export default function IndividualProject({
@@ -13,6 +16,8 @@ export default function IndividualProject({
   i,
   inView,
   animationEnd,
+  setIsModalOpened,
+  setModalIndex,
 }: IndividualProjectProps) {
   const { hoveredIndex, handleMouseEnter, handleMouseLeave } =
     useHoveredIndex(i);
@@ -25,6 +30,11 @@ export default function IndividualProject({
     } else {
       return 0;
     }
+  };
+
+  const handleClickDetailButton = (i: number) => {
+    setIsModalOpened(true);
+    setModalIndex(i);
   };
 
   return (
@@ -54,7 +64,10 @@ export default function IndividualProject({
         <p className="text-2xl select-none font-bold">{project.title}</p>
         <div className="h-12 flex items-center justify-center">
           {hoveredIndex === i ? (
-            <button className="transition-all select-none duration-300 border-[1px] hover:bg-silver hover:text-gray rounded-2xl px-4 py-2">
+            <button
+              onClick={() => handleClickDetailButton(i)}
+              className="transition-all select-none duration-300 border-[1px] hover:bg-silver hover:text-gray rounded-2xl px-4 py-2"
+            >
               자세히 보기
             </button>
           ) : (

@@ -21,8 +21,9 @@ export default function IndividualTechStack({
     <div
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="relative h-[212px] perspective-1000"
+      className="relative h-[212px]"
       onClick={handleClick}
+      style={{ perspective: 750 }}
     >
       <motion.div
         initial={{ opacity: 0, y: 20, rotateY: 0 }}
