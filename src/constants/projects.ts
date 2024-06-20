@@ -8,7 +8,7 @@ export const projects = [
   {
     title: "오늘의 운세",
     description:
-      "유저의 생년월일, MBTI를 이용해 운세를 제공하는 모바일 애플리케이션입니다.",
+      "유저의 생년월일, MBTI를 이용해 운세를 제공하는 모바일 앱입니다.",
     imgSrc: "/images/logos/today_s_horoscope.png",
   },
   {
