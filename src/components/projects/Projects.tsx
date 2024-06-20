@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import useSidebarAnimation from "../../hooks/useSidebarAnimation";
 import Title from "../title/Title";
 import IndividualProject from "./individualProject/IndividualProject";
@@ -21,6 +21,14 @@ export default function Projects({ setActiveIndex }: ProjectsProps) {
     once: true,
     margin: "-100px 0px 0px 0px",
   });
+
+  useEffect(() => {
+    if (inView) {
+      setTimeout(() => {
+        setAnimationEnd(true);
+      }, 800);
+    }
+  }, [inView]);
 
   return (
     <div

@@ -2,7 +2,7 @@ export const techStacks = [
   {
     title: "React",
     description:
-      "재사용 가능한 컴포넌트를 개발할 수 있습니다. React hook으로 컴포넌트의 상태관리와 사이드 이펙트를 처리할 수 있으며, 함수형 컴포넌트의 라이프 사이클에 대해 이해하고 있습니다.",
+      "재사용 가능한 컴포넌트를 개발할 수 있습니다. hook으로 컴포넌트의 상태관리와 사이드 이펙트를 처리할 수 있으며, 함수형 컴포넌트의 라이프 사이클에 대해 이해하고 있습니다.",
     imgSrc: "/images/techStacks/react.png",
   },
   {
@@ -14,7 +14,7 @@ export const techStacks = [
   {
     title: "TypeScript",
     description:
-      "TypeScript를 사용하여 타입 안정성을 보장하고, 코드의 유지보수성을 높일 수 있습니다. 타입 시스템을 통해 런타임 에러를 줄이고, 데이터를 효율적으로 처리하려 노력합니다.",
+      "타입 안정성을 보장하고, 코드의 유지보수성을 높일 수 있습니다. 타입 시스템을 통해 런타임 에러를 줄이고, 데이터를 효율적으로 처리하려 노력합니다.",
     imgSrc: "/images/techStacks/typescript.png",
   },
   {

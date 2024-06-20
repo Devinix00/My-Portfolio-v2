@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import useDevice from "./useDevice";
 import isMobileDevice from "../utils/isMobileDevice";
 
-export default function useRotateTechStack(i: number) {
+export default function useHoveredIndex(i: number) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
   const { device } = useDevice();

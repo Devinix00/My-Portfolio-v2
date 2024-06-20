@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import useHoveredIndex from "../../../hooks/useHoveredIndex";
 
 interface IndividualProjectProps {
   project: Project;
@@ -13,12 +14,27 @@ export default function IndividualProject({
   inView,
   animationEnd,
 }: IndividualProjectProps) {
+  const { hoveredIndex, handleMouseEnter, handleMouseLeave } =
+    useHoveredIndex(i);
+
+  const calculateY = () => {
+    if (!inView) {
+      return 20;
+    } else if (hoveredIndex === i) {
+      return -10;
+    } else {
+      return 0;
+    }
+  };
+
   return (
     <motion.div
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       initial={{ opacity: 0, y: 20 }}
       animate={{
         opacity: inView ? 1 : 0,
-        y: inView ? 0 : 20,
+        y: calculateY(),
       }}
       transition={{
         type: "spring",
@@ -35,8 +51,16 @@ export default function IndividualProject({
         />
       </div>
       <section className="flex flex-col gap-2 items-center">
-        <p className="text-2xl font-bold">{project.title}</p>
-        <p className="text-center">{project.description}</p>
+        <p className="text-2xl select-none font-bold">{project.title}</p>
+        <div className="h-12 flex items-center justify-center">
+          {hoveredIndex === i ? (
+            <button className="transition-all select-none duration-300 border-[1px] hover:bg-silver hover:text-gray rounded-2xl px-4 py-2">
+              자세히 보기
+            </button>
+          ) : (
+            <p className="text-center select-none">{project.description}</p>
+          )}
+        </div>
       </section>
     </motion.div>
   );

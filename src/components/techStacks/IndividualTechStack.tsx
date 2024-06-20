@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import useRotateTechStack from "../../hooks/useRotateTechStack";
+import useHoveredIndex from "../../hooks/useHoveredIndex";
 
 interface TechStackProps {
   inView: boolean;
@@ -15,7 +15,7 @@ export default function IndividualTechStack({
   techStack,
 }: TechStackProps) {
   const { hoveredIndex, handleMouseEnter, handleMouseLeave, handleClick } =
-    useRotateTechStack(i);
+    useHoveredIndex(i);
 
   return (
     <div
