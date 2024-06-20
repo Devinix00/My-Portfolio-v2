@@ -19,7 +19,7 @@ export default function IndividualProject({
   setIsModalOpened,
   setModalIndex,
 }: IndividualProjectProps) {
-  const { hoveredIndex, handleMouseEnter, handleMouseLeave } =
+  const { hoveredIndex, handleMouseEnter, handleMouseLeave, handleClick } =
     useHoveredIndex(i);
 
   const calculateY = () => {
@@ -41,6 +41,7 @@ export default function IndividualProject({
     <motion.div
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
       initial={{ opacity: 0, y: 20 }}
       animate={{
         opacity: inView ? 1 : 0,
