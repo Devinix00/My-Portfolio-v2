@@ -11,9 +11,9 @@ interface TechStacksProps {
 
 export default function TechStacks({ setActiveIndex }: TechStacksProps) {
   const [animationEnd, setAnimationEnd] = useState(false);
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true });
-  const { ref: divRef } = useSidebarAnimation({
+  const contentsRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(contentsRef, { once: true });
+  const { ref: containerRef } = useSidebarAnimation({
     activeIndex: 1,
     setActiveIndex,
   });
@@ -28,13 +28,13 @@ export default function TechStacks({ setActiveIndex }: TechStacksProps) {
 
   return (
     <div
-      ref={divRef}
+      ref={containerRef}
       id="tech-stacks"
       className="min-h-[100vh] 3xl:min-h-fit pt-20"
     >
       <Title>Tech Stacks</Title>
       <div
-        ref={ref}
+        ref={contentsRef}
         className="mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
       >
         {techStacks.map((techStack, i) => (

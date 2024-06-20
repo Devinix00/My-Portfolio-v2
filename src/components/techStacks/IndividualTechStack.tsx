@@ -25,7 +25,6 @@ export default function IndividualTechStack({
       onClick={handleClick}
     >
       <motion.div
-        key={i}
         initial={{ opacity: 0, y: 20, rotateY: 0 }}
         animate={{
           opacity: inView ? 1 : 0,
