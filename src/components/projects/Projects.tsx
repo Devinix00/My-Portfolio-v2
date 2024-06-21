@@ -1,4 +1,10 @@
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import useSidebarAnimation from "../../hooks/useSidebarAnimation";
 import Title from "../title/Title";
 import IndividualProject from "./IndividualProject";
@@ -35,7 +41,7 @@ export default function Projects({ setActiveIndex }: ProjectsProps) {
   }, [inView]);
 
   return (
-    <>
+    <React.Fragment>
       <div
         ref={containerRef}
         id="projects"
@@ -49,6 +55,7 @@ export default function Projects({ setActiveIndex }: ProjectsProps) {
         >
           {projects.map((project, i) => (
             <IndividualProject
+              key={i}
               {...{
                 project,
                 i,
@@ -69,6 +76,6 @@ export default function Projects({ setActiveIndex }: ProjectsProps) {
           />
         )}
       </AnimatePresence>
-    </>
+    </React.Fragment>
   );
 }
