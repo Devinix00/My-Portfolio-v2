@@ -17,7 +17,7 @@ export default function ProjectModalHeader({
   setIsModalOpened,
 }: ProjectModalHeaderProps) {
   return (
-    <section className="sticky top-0 h-20 bg-black flex justify-between items-center px-6 md:px-10">
+    <section className="sticky top-0 h-20 bg-black z-10 flex justify-between items-center px-6 md:px-10">
       <section className="flex gap-4 items-center">
         {modalIndex !== null && (
           <img
