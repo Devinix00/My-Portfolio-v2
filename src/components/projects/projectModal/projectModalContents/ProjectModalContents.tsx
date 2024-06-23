@@ -10,7 +10,7 @@ export default function ProjectModalContents({
   modalIndex,
 }: ProjectModalContentsProps) {
   return (
-    <section className="mb-20 overflow-x-hidden">
+    <section className="mb-20">
       {activeTabIndex === 0 ? (
         <ProjectOutline modalIndex={modalIndex} />
       ) : (
