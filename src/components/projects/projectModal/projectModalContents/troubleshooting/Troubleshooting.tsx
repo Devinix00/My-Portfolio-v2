@@ -43,15 +43,18 @@ export default function Troubleshooting({ modalIndex }: TroubleShootingProps) {
                     {troubleShooting.solution}
                   </p>
                 </section>
-                <section className="overflow-x-hidden">
-                  <p className="text-brown md:text-lg font-medium mt-8">
+                <section>
+                  <p className="text-brown md:text-lg font-medium mt-8 mb-2">
                     [기술 블로그 링크]
                   </p>
-                  <div className="mt-2 text-sm md:text-base text-blue_light hover:underline w-fit">
-                    <Link to={troubleShooting.link} target="_BLANK">
-                      {troubleShooting.link}
-                    </Link>
-                  </div>
+
+                  <Link
+                    to={troubleShooting.link}
+                    target="_BLANK"
+                    className="text-sm md:text-base text-blue_light hover:underline"
+                  >
+                    {troubleShooting.link}
+                  </Link>
                 </section>
               </div>
             )
