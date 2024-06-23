@@ -8,14 +8,14 @@ interface TroubleShootingProps {
 
 export default function Troubleshooting({ modalIndex }: TroubleShootingProps) {
   return (
-    <div className="text-black px-6 md:px-0 md:w-[720px] md:mx-auto">
+    <div className="text-black overflow-x-hidden px-6 md:px-0 md:w-[720px] md:mx-auto">
       <TroubleshootingTitle modalIndex={modalIndex} />
 
-      <div className="flex flex-col gap-20">
+      <div className="flex flex-col gap-20 overflow-x-hidden">
         {modalIndex !== null &&
           projectDetails[modalIndex].troubleShootings?.map(
             (troubleShooting, i) => (
-              <div key={i}>
+              <div key={i} className="overflow-x-hidden">
                 <p className="text-xl font-medium md:text-2xl pb-4 border-b-[1px] border-slate-300">
                   {i + 1}. {troubleShooting.title}
                 </p>
@@ -51,7 +51,7 @@ export default function Troubleshooting({ modalIndex }: TroubleShootingProps) {
                   <Link
                     to={troubleShooting.link}
                     target="_BLANK"
-                    className="text-sm md:text-base text-blue_light hover:underline"
+                    className="text-sm md:text-base overflow-x-hidden text-blue_light hover:underline"
                   >
                     {troubleShooting.link}
                   </Link>
