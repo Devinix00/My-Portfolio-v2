@@ -1,7 +1,7 @@
 import { MdPlayArrow } from "react-icons/md";
 import { projectDetails } from "../../../../../constants/projectDetails";
 import ProjectModalTitle from "./ProjectModalTitle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import clsx from "clsx";
 
 interface ProjectMyContributionProps {
@@ -12,6 +12,18 @@ export default function ProjectMyContribution({
   modalIndex,
 }: ProjectMyContributionProps) {
   const [activeIndexes, setActiveIndexes] = useState<number[]>([]);
+
+  useEffect(() => {
+    if (modalIndex !== null) {
+      const newActiveIndexes = projectDetails[modalIndex].myContributions?.map(
+        (_, i) => i
+      );
+
+      setActiveIndexes(newActiveIndexes as number[]);
+    } else {
+      setActiveIndexes([]);
+    }
+  }, [modalIndex]);
 
   const handleClickButton = (i: number) => {
     if (activeIndexes.includes(i)) {
