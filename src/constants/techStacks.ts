@@ -42,7 +42,7 @@ export const techStacks = [
     imgSrc: "/images/techStacks/RTK.png",
   },
   {
-    title: "tailwindcss",
+    title: "Tailwind CSS",
     description:
       "tailwindcss를 사용하여 유틸리티 기반의 CSS를 작성할 수 있습니다. 빠르고 효율적인 스타일링을 통해 일관성 있는 디자인 시스템을 구축합니다.",
     imgSrc: "/images/techStacks/tailwind.png",

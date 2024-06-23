@@ -9,7 +9,7 @@ interface ProjectOutlineProps {
 
 export default function ProjectOutline({ modalIndex }: ProjectOutlineProps) {
   return (
-    <div className="h-[2000px]">
+    <div className="pb-20">
       <ProjectBanner modalIndex={modalIndex} />
 
       <div className="mt-8 px-6 md:px-0 md:w-[720px] md:mx-auto">
