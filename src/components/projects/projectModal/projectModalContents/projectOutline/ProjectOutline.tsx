@@ -1,5 +1,6 @@
 import ProjectBanner from "./ProjectBanner";
 import ProjectIntro from "./ProjectIntro";
+import ProjectMyContribution from "./ProjectMyContribution";
 import ProjectTechStacks from "./ProjectTechStacks";
 
 interface ProjectOutlineProps {
@@ -15,6 +16,7 @@ export default function ProjectOutline({ modalIndex }: ProjectOutlineProps) {
         <ProjectIntro modalIndex={modalIndex} />
         <div className="flex flex-col gap-8 mt-8 text-gray">
           <ProjectTechStacks modalIndex={modalIndex} />
+          <ProjectMyContribution modalIndex={modalIndex} />
         </div>
       </div>
     </div>

@@ -6,6 +6,7 @@ export default {
       colors: {
         black: "#1b1b1e",
         silver_light: "#efeff1",
+        silver_light_2: "#e2e2e3",
         silver: "#c7c7c7",
         gray: "#373737",
         red: "#ff4d4f",

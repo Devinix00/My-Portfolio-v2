@@ -14,7 +14,7 @@ export default function ProjectTechStacks({
       {modalIndex !== null && (
         <ul className="flex flex-col gap-2">
           {projectDetails[modalIndex].techStacks?.map((techStack, i) => (
-            <li className="bg-silver_light w-full p-2 rounded-lg">
+            <li key={i} className="bg-silver_light w-full p-2 rounded-lg">
               {i + 1}. {techStack}
             </li>
           ))}

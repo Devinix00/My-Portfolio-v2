@@ -14,6 +14,16 @@ export const projectDetails = [
       "React-Query",
       "Zustand",
     ],
+    myContributions: [
+      "카카오, 네이버 소셜 로그인",
+      "상세 페이지 반응형 퍼블리싱",
+      "영화 리뷰 등록, 수정, 삭제, 좋아요",
+      "영화 리뷰 무한 스크롤 조회",
+      "영화 평점 등록",
+      "영화 찜하기",
+      "영화 키워드 작성",
+      "영화 포스터 색상 추출",
+    ],
   },
   {
     title: "오늘의 운세",
@@ -35,6 +45,13 @@ export const projectDetails = [
       "React-Query",
       "Zustand",
     ],
+    myContributions: [
+      "Turborepo를 이용하여 멀티레포 구성",
+      "React-Native Webview 구성",
+      "Android 물리적 뒤로가기 구현",
+      "푸시 메세지 구현",
+      "어드민 페이지 개발",
+    ],
   },
   {
     title: "모두의 텃밭",
@@ -51,6 +68,14 @@ export const projectDetails = [
       "Axios",
       "React-Query",
       "Zustand",
+    ],
+    myContributions: [
+      "카카오, 네이버 소셜 로그인",
+      "지역 검색 (네이버 지도 위치 이동)",
+      "네이버 지도 기반 내 위치 (geolocation)",
+      "위도와 경도를 조작하여 텃밭 조회",
+      "사이드 바 텃밭 무한 스크롤 조회",
+      "텃밭 신고, 찜하기, 신청하기",
     ],
   },
   {
