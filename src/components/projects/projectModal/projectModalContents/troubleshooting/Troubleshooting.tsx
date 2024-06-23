@@ -51,7 +51,7 @@ export default function Troubleshooting({ modalIndex }: TroubleShootingProps) {
                     <Link
                       to={troubleShooting.link}
                       target="_BLANK"
-                      className="text-blue_light hover:underline"
+                      className="text-blue_light hover:underline w-fit"
                     >
                       {troubleShooting.link}
                     </Link>
