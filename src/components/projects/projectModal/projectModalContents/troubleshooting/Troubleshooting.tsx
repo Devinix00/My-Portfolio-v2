@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import TroubleshootingTitle from "./TroubleshootingTitle";
 import { projectDetails } from "../../../../../constants/projectDetails";
+import { SiVelog } from "react-icons/si";
 
 interface TroubleShootingProps {
   modalIndex: number | null;
@@ -48,13 +49,15 @@ export default function Troubleshooting({ modalIndex }: TroubleShootingProps) {
                     [기술 블로그 링크]
                   </p>
 
-                  <Link
-                    to={troubleShooting.link}
-                    target="_BLANK"
-                    className="text-sm md:text-base whitespace-normal text-blue_light hover:underline"
-                  >
-                    {troubleShooting.link}
-                  </Link>
+                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden">
+                    <Link
+                      to={troubleShooting.link}
+                      target="_BLANK"
+                      className="text-sm md:text-base whitespace-normal text-blue_light hover:underline"
+                    >
+                      <SiVelog className="w-full h-full" fill="#21C998" />
+                    </Link>
+                  </div>
                 </section>
               </div>
             )
