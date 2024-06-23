@@ -49,7 +49,7 @@ export default function Troubleshooting({ modalIndex }: TroubleShootingProps) {
                     [기술 블로그 링크]
                   </p>
 
-                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden">
+                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl overflow-hidden">
                     <Link
                       to={troubleShooting.link}
                       target="_BLANK"
