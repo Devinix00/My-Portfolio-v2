@@ -1,7 +1,6 @@
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { projectDetails } from "../../../constants/projectDetails";
-import { Dispatch, SetStateAction } from "react";
-import clsx from "clsx";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 
 interface ProjectModalHeaderProps {
   activeTabIndex: number;
@@ -16,6 +15,14 @@ export default function ProjectModalHeader({
   modalIndex,
   setIsModalOpened,
 }: ProjectModalHeaderProps) {
+  const [widths, setWidths] = useState<(number | undefined)[]>([]);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  useEffect(() => {
+    const newWidths = tabRefs?.current.map((tab) => tab?.scrollWidth);
+    setWidths(newWidths);
+  }, []);
+
   return (
     <section className="sticky top-0 h-20 bg-black z-10 flex justify-between items-center px-6 md:px-10">
       <section className="flex gap-4 items-center">
@@ -28,15 +35,31 @@ export default function ProjectModalHeader({
         )}
 
         <section className="flex relative gap-4">
-          <button onClick={() => setActiveTabIndex(0)}>개요</button>
-          <button onClick={() => setActiveTabIndex(1)}>트러블 슈팅</button>
+          <button
+            ref={(el) => (tabRefs.current[0] = el)}
+            onClick={() => setActiveTabIndex(0)}
+          >
+            개요
+          </button>
+          <button
+            ref={(el) => (tabRefs.current[1] = el)}
+            onClick={() => setActiveTabIndex(1)}
+          >
+            트러블 슈팅
+          </button>
           <div
-            className={clsx(
-              "w-4 h-[2.5px] duration-300 bg-orange absolute transition-transform -bottom-[5px] rounded-3xl",
+            style={
               activeTabIndex === 0
-                ? "translate-x-[6px]"
-                : "translate-x-[71.5px]"
-            )}
+                ? {
+                    transform: `translateX(${(widths[0] as number) / 2 - 8}px)`,
+                  }
+                : {
+                    transform: `translateX(${
+                      (widths[0] as number) + (widths[1] as number) / 2 - 8 + 16
+                    }px)`,
+                  }
+            }
+            className="w-4 h-[2.5px] duration-300 bg-orange absolute transition-transform -bottom-[5px] rounded-3xl"
           />
         </section>
       </section>

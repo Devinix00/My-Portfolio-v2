@@ -1,14 +1,15 @@
 import { FaTools } from "react-icons/fa";
 
 interface ProjectModalTitleProps {
-  type: "techStacks";
+  type: "techStack" | "myContribution";
 }
 
 export default function ProjectModalTitle({ type }: ProjectModalTitleProps) {
-  const projectModalTitleMap = {
-    techStacks: {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const projectModalTitleMap: { [key: string]: any } = {
+    techStack: {
       icon: <FaTools />,
-      content: "기술 스택",
+      content: "주요 기술 스택",
     },
   };
 

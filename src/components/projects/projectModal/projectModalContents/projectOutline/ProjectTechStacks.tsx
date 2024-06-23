@@ -10,7 +10,7 @@ export default function ProjectTechStacks({
 }: ProjectTechStacksProps) {
   return (
     <div>
-      <ProjectModalTitle type="techStacks" />
+      <ProjectModalTitle type="techStack" />
       {modalIndex !== null && (
         <ul className="flex flex-col gap-2">
           {projectDetails[modalIndex].techStacks?.map((techStack, i) => (
