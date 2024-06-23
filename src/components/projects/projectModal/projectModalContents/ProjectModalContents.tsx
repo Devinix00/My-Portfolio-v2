@@ -10,11 +10,11 @@ export default function ProjectModalContents({
   modalIndex,
 }: ProjectModalContentsProps) {
   return (
-    <section>
+    <section className="mb-20">
       {activeTabIndex === 0 ? (
         <ProjectOutline modalIndex={modalIndex} />
       ) : (
-        <Troubleshooting />
+        <Troubleshooting modalIndex={modalIndex} />
       )}
     </section>
   );

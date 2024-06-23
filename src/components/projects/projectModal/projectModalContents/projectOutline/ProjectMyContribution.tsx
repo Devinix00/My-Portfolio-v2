@@ -49,7 +49,7 @@ export default function ProjectMyContribution({
                 {activeIndexes.includes(i) && (
                   <div className="pl-5 py-5 flex gap-2">
                     <p className="text-sm">
-                      {projectDetails[modalIndex].myContributionsDetail[i]}
+                      {projectDetails[modalIndex].myContributionsDetails[i]}
                     </p>
                   </div>
                 )}

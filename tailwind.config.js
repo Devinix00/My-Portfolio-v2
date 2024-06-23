@@ -11,6 +11,10 @@ export default {
         silver: "#c7c7c7",
         gray: "#373737",
         red: "#ff4d4f",
+        green: "#529e72",
+        blue: "#5e87c9",
+        blue_light: "#258ddb",
+        brown: "#ba856f",
         orange: "#FE7211",
       },
       screens: {
