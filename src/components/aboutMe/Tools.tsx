@@ -3,8 +3,8 @@ import AboutMeTitle from "./AboutMeTitle";
 
 export default function Tools() {
   return (
-    <div className="mt-6 md:mt-12">
-      <AboutMeTitle>Communication Tools</AboutMeTitle>
+    <div className="mt-12">
+      <AboutMeTitle>Cooperation Tools</AboutMeTitle>
       <div className="flex gap-6 mt-4 flex-wrap">
         {aboutMe[7].tools?.map((tool, i) => (
           <div

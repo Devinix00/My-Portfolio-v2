@@ -37,7 +37,7 @@ export const aboutMe = [
   {
     title: "Blog",
     icon: <SiVelog className="w-6 h-6 p-[2px]" />,
-    content: "https://github.com/Devinix00",
+    content: "https://velog.io/@dpldpl/posts",
     isLink: true,
   },
   {

@@ -11,7 +11,7 @@ export default function MyInfo() {
             <p className="text-xl font-semibold">{el.title}</p>
             {el.isLink ? (
               <Link to={el.content} target="_BLANK">
-                <p className="md:w-[75%] hover:underline lg:w-full whitespace-normal text-sm text-ellipsis overflow-hidden text-blue_light">
+                <p className="md:w-[70%] hover:underline lg:w-full whitespace-normal text-sm text-ellipsis overflow-hidden text-blue_light">
                   {el.content}
                 </p>
               </Link>
