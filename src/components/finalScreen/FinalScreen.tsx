@@ -64,7 +64,7 @@ export default function FinalScreen({ setActiveIndex }: FinalScreenProps) {
             animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
             transition={{ delay: 3.35, duration: 0.5 }}
           >
-            <Link to="https://github.com/Devinix00">
+            <Link target="_BLANK" to="https://github.com/Devinix00">
               <FaGithub className="w-12 h-12 p-[1px]" />
             </Link>
           </motion.div>
@@ -73,7 +73,7 @@ export default function FinalScreen({ setActiveIndex }: FinalScreenProps) {
             animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
             transition={{ delay: 3.95, duration: 0.5 }}
           >
-            <Link to="https://velog.io/@dpldpl/posts">
+            <Link target="_BLANK" to="https://velog.io/@dpldpl/posts">
               <SiVelog className="w-12 h-12 p-[1px]" />
             </Link>
           </motion.div>
