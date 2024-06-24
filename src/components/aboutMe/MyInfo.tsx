@@ -4,8 +4,8 @@ import { aboutMe } from "../../constants/aboutMe";
 export default function MyInfo() {
   return (
     <div className="mt-4 flex flex-col md:grid md:grid-cols-3 gap-6 md:gap-12">
-      {aboutMe.map((el) => (
-        <div className="flex gap-2 md:gap-4">
+      {aboutMe.map((el, i) => (
+        <div key={i} className="flex gap-2 md:gap-4">
           <div>{el.icon}</div>
           <section className="flex flex-col gap-1">
             <p className="text-xl font-semibold">{el.title}</p>
