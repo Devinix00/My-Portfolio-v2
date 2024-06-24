@@ -50,7 +50,7 @@ export default function IndividualProject({
       transition={{
         type: "spring",
         duration: 1,
-        delay: !animationEnd ? (i + 1) * 0.2 : 0,
+        delay: !animationEnd ? (i + 2) * 0.2 : 0,
       }}
       className="rounded-3xl bg-gray p-8 flex flex-col gap-8"
     >

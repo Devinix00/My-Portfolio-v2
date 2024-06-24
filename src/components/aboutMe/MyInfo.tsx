@@ -3,7 +3,7 @@ import { aboutMe } from "../../constants/aboutMe";
 
 export default function MyInfo() {
   return (
-    <div className="flex flex-col md:grid md:grid-cols-3 gap-6 md:gap-12">
+    <div className="mt-4 flex flex-col md:grid md:grid-cols-3 gap-6 md:gap-12">
       {aboutMe.map((el) => (
         <div className="flex gap-2 md:gap-4">
           <div>{el.icon}</div>

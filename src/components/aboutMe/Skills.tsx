@@ -1,11 +1,11 @@
 import React from "react";
 import { aboutMe } from "../../constants/aboutMe";
-import SkillsAndToolsTitle from "./SkillsAndToolsTitle";
+import AboutMeTitle from "./AboutMeTitle";
 
 export default function Skills() {
   return (
     <React.Fragment>
-      <SkillsAndToolsTitle>Tech Stacks</SkillsAndToolsTitle>
+      <AboutMeTitle>Tech Stacks</AboutMeTitle>
       <div className="flex gap-6 mt-4 flex-wrap">
         {aboutMe[6].techStacks?.map((techStack, i) => (
           <div

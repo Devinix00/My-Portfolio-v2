@@ -1,10 +1,10 @@
 import { aboutMe } from "../../constants/aboutMe";
-import SkillsAndToolsTitle from "./SkillsAndToolsTitle";
+import AboutMeTitle from "./AboutMeTitle";
 
 export default function Tools() {
   return (
     <div className="mt-6 md:mt-12">
-      <SkillsAndToolsTitle>Communication Tools</SkillsAndToolsTitle>
+      <AboutMeTitle>Communication Tools</AboutMeTitle>
       <div className="flex gap-6 mt-4 flex-wrap">
         {aboutMe[7].tools?.map((tool, i) => (
           <div
