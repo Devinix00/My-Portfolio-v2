@@ -25,7 +25,7 @@ export default function IndividualProject({
   const calculateY = () => {
     if (!inView) {
       return 20;
-    } else if (hoveredIndex === i) {
+    } else if (animationEnd && hoveredIndex === i) {
       return -10;
     } else {
       return 0;

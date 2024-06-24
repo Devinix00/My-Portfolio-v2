@@ -36,7 +36,7 @@ export default function Projects({ setActiveIndex }: ProjectsProps) {
     if (inView) {
       setTimeout(() => {
         setAnimationEnd(true);
-      }, 800);
+      }, 1750);
     }
   }, [inView]);
 
