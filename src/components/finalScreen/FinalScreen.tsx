@@ -27,7 +27,7 @@ export default function FinalScreen({ setActiveIndex }: FinalScreenProps) {
   const inView = useInView(contentsRef, { once: true });
 
   const subMessage =
-    "항상 최신 기술과 개발 트렌드를 학습하고, 사용자 경험을 관점으로 좋은 서비스를 개발할 수 있도록 노력하겠습니다! :)";
+    "문제를 분석하고 해결하는 능력을 기르며, 코드의 유지보수성과 재사용성을 높여 함께 일하고 싶은 개발자가 되도록 노력하겠습니다! :)";
 
   return (
     <div
@@ -62,7 +62,7 @@ export default function FinalScreen({ setActiveIndex }: FinalScreenProps) {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
-            transition={{ delay: 3.35, duration: 0.5 }}
+            transition={{ delay: 3.45, duration: 0.5 }}
           >
             <Link target="_BLANK" to="https://github.com/Devinix00">
               <FaGithub className="w-12 h-12 p-[1px]" />
@@ -71,7 +71,7 @@ export default function FinalScreen({ setActiveIndex }: FinalScreenProps) {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
-            transition={{ delay: 3.95, duration: 0.5 }}
+            transition={{ delay: 4.1, duration: 0.5 }}
           >
             <Link target="_BLANK" to="https://velog.io/@dpldpl/posts">
               <SiVelog className="w-12 h-12 p-[1px]" />
