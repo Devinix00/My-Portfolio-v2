@@ -27,7 +27,7 @@ function AboutMe({ setActiveIndex }: AboutMeProps) {
     <div
       ref={containerRef}
       id="about-me"
-      className="min-h-[100vh] 3xl:min-h-fit pt-20"
+      className="min-h-[100vh] 3xl:min-h-fit pt-20 mt-20"
     >
       <Title>About me</Title>
       <motion.div

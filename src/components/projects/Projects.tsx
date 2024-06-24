@@ -45,7 +45,7 @@ export default function Projects({ setActiveIndex }: ProjectsProps) {
       <div
         ref={containerRef}
         id="projects"
-        className="min-h-[100vh] 3xl:min-h-fit pt-20"
+        className="min-h-[100vh] 3xl:min-h-fit mt-20 pt-20"
       >
         <Title>Projects</Title>
 
