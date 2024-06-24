@@ -13,7 +13,7 @@ function SideNavigation({ activeIndex }: SideNavigationProps) {
 
   const scrollTargetsMap: { [key: number]: string } = {
     0: "initial-screen",
-    1: "tech-stacks",
+    1: "about-me",
     2: "projects",
     3: "final-screen",
   };
@@ -35,7 +35,7 @@ function SideNavigation({ activeIndex }: SideNavigationProps) {
   }, [activeIndex]);
 
   return (
-    <div className="fixed z-50 2xl:right-10 2xl:top-32 right-[24px] top-20 transform -translate-y-1/2 gap-4 flex flex-col">
+    <div className="fixed z-50 2xl:right-10 2xl:top-32 right-[14px] top-20 transform -translate-y-1/2 gap-4 flex flex-col">
       {Array(4)
         .fill(null)
         .map((_, i) => (

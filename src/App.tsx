@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import InitialScreen from "./components/initialScreen/InitialScreen";
-// import TechStacks from "./components/techStacks/TechStacks";
 import WhiteSpaceContainer from "./components/containers/WhiteSpaceContainer";
 import { motion, useScroll, useSpring } from "framer-motion";
-// import SideNavigation from "./components/sideNavigation/SideNavigation";
+import SideNavigation from "./components/sideNavigation/SideNavigation";
 import Projects from "./components/projects/Projects";
 import FinalScreen from "./components/finalScreen/FinalScreen";
 import { useModalStore } from "./stores/useModalStore";
@@ -35,14 +34,13 @@ function App() {
           className="z-50 origin-top-left sticky top-0 h-1 bg-red"
           style={{ scaleX }}
         />
-        {/* <SideNavigation activeIndex={activeIndex} /> */}
+        <SideNavigation activeIndex={activeIndex} />
         <InitialScreen
           activeIndex={activeIndex}
           setActiveIndex={setActiveIndex}
         />
         <WhiteSpaceContainer>
-          {/* <TechStacks setActiveIndex={setActiveIndex} /> */}
-          <AboutMe />
+          <AboutMe setActiveIndex={setActiveIndex} />
           <Projects setActiveIndex={setActiveIndex} />
           <FinalScreen setActiveIndex={setActiveIndex} />
         </WhiteSpaceContainer>
