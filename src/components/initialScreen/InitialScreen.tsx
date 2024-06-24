@@ -22,7 +22,7 @@ export default function InitialScreen({
   const [hideIcon, setHideIcon] = useState(false);
 
   const hancleClickDownIcon = () => {
-    smoothScroll("tech-stacks");
+    smoothScroll("about-me");
     setIsHoveredIcon(false);
   };
 
