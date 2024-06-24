@@ -36,7 +36,7 @@ function AboutMe({ setActiveIndex }: AboutMeProps) {
         transition={{
           type: "spring",
           duration: 2,
-          delay: 0.25,
+          delay: 0.45,
         }}
         ref={contentsRef}
         className="bg-gray w-full p-6 md:p-8 rounded-3xl"
