@@ -6,7 +6,7 @@ export default function Skills() {
   return (
     <React.Fragment>
       <AboutMeTitle>Tech Stacks</AboutMeTitle>
-      <div className="flex gap-6 mt-4 flex-wrap">
+      <div className="flex gap-4 mt-4 flex-wrap">
         {aboutMe[6].techStacks?.map((techStack, i) => (
           <div
             key={i}
