@@ -71,6 +71,8 @@ export const projectDetails = [
     logoSrc: "/images/logos/today_s_horoscope.png",
     imgSrc: "/images/projects/today_s_horoscope.png",
     gitHub: "https://github.com/Devinix00/today-s-horoscope",
+    googlePlayStoreURl:
+      "https://play.google.com/store/apps/details?id=com.exodus.fortune",
     siteUrl: "",
     techStacks: [
       "Turborepo",
