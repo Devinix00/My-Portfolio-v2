@@ -17,14 +17,16 @@ function ProjectIntro({ modalIndex }: ProjectIntroProps) {
             {projectDetails[modalIndex].description}
           </div>
           <section className="flex justify-center gap-6 mt-8">
-            <Link
-              target="_BLANK"
-              to={projectDetails[modalIndex].gitHub}
-              className="flex flex-col items-center cursor-pointer"
-            >
-              <FaGithub fill="#1b1b1e" className="w-10 h-10" />
-              <p>Github</p>
-            </Link>
+            {modalIndex !== 2 && (
+              <Link
+                target="_BLANK"
+                to={projectDetails[modalIndex].gitHub as string}
+                className="flex flex-col items-center cursor-pointer"
+              >
+                <FaGithub fill="#1b1b1e" className="w-10 h-10" />
+                <p>Github</p>
+              </Link>
+            )}
             {modalIndex !== 1 && (
               <Link
                 target="_BLANK"

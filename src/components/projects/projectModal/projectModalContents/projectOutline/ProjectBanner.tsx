@@ -35,7 +35,7 @@ export default function ProjectBanner({ modalIndex }: ProjectBannerProps) {
             <div
               className={clsx(
                 "rounded-2xl overflow-hidden",
-                modalIndex === 1
+                modalIndex === 1 || modalIndex === 2
                   ? shouldLoadImage && "w-[220px] h-[390.45px]"
                   : "md:w-[688px] md:h-[390px]"
               )}
@@ -54,8 +54,14 @@ export default function ProjectBanner({ modalIndex }: ProjectBannerProps) {
                   ) : (
                     <SkeletonTheme
                       baseColor="#373737"
-                      width={modalIndex === 1 ? "220px" : "100%"}
-                      height={modalIndex === 1 ? "390.45px" : "100%"}
+                      width={
+                        modalIndex === 1 || modalIndex === 2 ? "220px" : "100%"
+                      }
+                      height={
+                        modalIndex === 1 || modalIndex === 2
+                          ? "390.45px"
+                          : "100%"
+                      }
                       highlightColor="#444"
                     >
                       <Skeleton />

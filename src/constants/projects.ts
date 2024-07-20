@@ -11,9 +11,9 @@ export const projects = [
     imgSrc: "/images/logos/today_s_horoscope.png",
   },
   {
-    title: "저메추 (DMR)",
-    description: "유저들에게 저녁 메뉴를 추천해주는 서비스입니다.",
-    imgSrc: "/images/logos/DMR.png",
+    title: "휘뚜루 마뚜루 (외주)",
+    description: "시계와 명품에 관련된 커뮤니티 서비스입니다.",
+    imgSrc: "/images/logos/hituru.png",
   },
   {
     title: "씨네톡 (Cinetalk)",
