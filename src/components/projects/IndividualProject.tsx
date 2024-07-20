@@ -33,6 +33,10 @@ export default function IndividualProject({
   };
 
   const handleClickDetailButton = (i: number) => {
+    if (i === 2)
+      return alert(
+        "해당 프로젝트는 아직 서비스 출시 전이라 프로젝트와 관련된 내용을 공개 할 수 없습니다. ㅠㅠ 죄송합니다. 8월 달에 출시 예정입니다."
+      );
     setIsModalOpened(true);
     setModalIndex(i);
   };
