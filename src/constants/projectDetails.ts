@@ -6,7 +6,7 @@ export const projectDetails = [
     logoSrc: "/images/logos/everyone_s_garden.png",
     imgSrc: "/images/projects/everyone_s_garden.png",
     gitHub: "https://github.com/Devinix00/everyone-s-garden-front",
-    siteUrl: "https://everyonesgarden-v2.vercel.app",
+    siteUrl: "https://www.everyones-garden.com/",
     techStacks: [
       "React",
       "Typescript",
