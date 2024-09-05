@@ -144,6 +144,7 @@ export const projectDetails = [
     siteUrl: "https://www.hituru.com",
     techStacks: [
       "Next.Js",
+      "React-Native (expo)",
       "Typescript",
       "shadcn/ui",
       "Tailwind CSS",
@@ -152,6 +153,7 @@ export const projectDetails = [
       "Zustand",
     ],
     myContributions: [
+      "React-Native Webview 구성",
       "댓글, 대댓글 기능 구현",
       "회원가입",
       "팔로워, 팔로잉 페이지 개발",
@@ -160,6 +162,7 @@ export const projectDetails = [
       "백화점 판매가 변동추이(차트) 구현",
     ],
     myContributionsDetails: [
+      "React-Native와 react-native-webview 라이브러리를 이용하여 웹뷰 앱을 구현하였습니다. 안드로이드 기기의 물리적 뒤로가기 버튼의 대응과, 네트워크가 없는 상황에서 대체 ui를 보여주기 위하여 @react-native-community/netinfo 라이브러리를 활용하였습니다.",
       "게시판의 댓글과 답글 기능을 구현했습니다. 특히 답글이 여러 단계로 중첩될 경우, 백엔드 서버에서 받아오는 댓글 리스트 데이터가 계층적으로 쌓이게 됩니다. 이를 효율적으로 처리하기 위해, 재귀 함수를 활용해 댓글 컴포넌트를 구현했습니다.",
       "소셜 로그인을 사용하지 않는 이용자들을 위한 회원가입 기능을 구현하였습니다. 비밀번호의 유효성 검사에는 zod 라이브러리를 활용하여 특수 문자와 대소문자 등의 조건을 충족하도록 하였고, SMS 인증 기능도 구현하였습니다. 또한, 이메일과 닉네임의 중복 여부를 확인하는 예외처리를 하였습니다.",
       "유저의 팔로워, 팔로잉 목록을 조회할 수 있는 페이지를 개발하였습니다. 동적 라우팅을 통해 모든 유저의 팔로워, 팔로우 목록을 조회할 수 있으며 이 페이지에서 언팔로우, 팔로잉을 할 경우 UX 개선을 위한 optimistic update를 적용하였습니다.",
