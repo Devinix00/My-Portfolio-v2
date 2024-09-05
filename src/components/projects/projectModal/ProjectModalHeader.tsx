@@ -41,35 +41,34 @@ export default function ProjectModalHeader({
           >
             개요
           </button>
-          {modalIndex !== 2 && (
-            <>
-              <button
-                ref={(el) => (tabRefs.current[1] = el)}
-                onClick={() => setActiveTabIndex(1)}
-              >
-                트러블 슈팅
-              </button>
-              <div
-                style={
-                  activeTabIndex === 0
-                    ? {
-                        transform: `translateX(${
-                          (widths[0] as number) / 2 - 8
-                        }px)`,
-                      }
-                    : {
-                        transform: `translateX(${
-                          (widths[0] as number) +
-                          (widths[1] as number) / 2 -
-                          8 +
-                          16
-                        }px)`,
-                      }
-                }
-                className="w-4 h-[2.5px] duration-300 bg-orange absolute transition-transform -bottom-[5px] rounded-3xl"
-              />
-            </>
-          )}
+
+          <>
+            <button
+              ref={(el) => (tabRefs.current[1] = el)}
+              onClick={() => setActiveTabIndex(1)}
+            >
+              트러블 슈팅
+            </button>
+            <div
+              style={
+                activeTabIndex === 0
+                  ? {
+                      transform: `translateX(${
+                        (widths[0] as number) / 2 - 8
+                      }px)`,
+                    }
+                  : {
+                      transform: `translateX(${
+                        (widths[0] as number) +
+                        (widths[1] as number) / 2 -
+                        8 +
+                        16
+                      }px)`,
+                    }
+              }
+              className="w-4 h-[2.5px] duration-300 bg-orange absolute transition-transform -bottom-[5px] rounded-3xl"
+            />
+          </>
         </section>
       </section>
       <IoIosCloseCircleOutline

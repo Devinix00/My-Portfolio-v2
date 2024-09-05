@@ -167,6 +167,18 @@ export const projectDetails = [
       "유저가 원하는 디자인의 시계를 커스텀하는 기능을 구현하였습니다. 재질, 베젤, 브레이슬릿, 다이얼 등을 자유자재로 조합하여 자신만의 시계를 커스텀하고 다운받을 수 있습니다. 이 작업에는 canvas API를 활용했습니다.",
       "shadcn/ui 라이브러리를 이용하여 제품에 관련된 기간별 백화점 판매가를 차트 그래프 형식으로 구현하였습니다.",
     ],
+    troubleShootings: [
+      {
+        title: "React Native(expo) 빌드 실패 문제 해결: Node.js 버전 충돌",
+        problem:
+          "React Native로 웹뷰 패키징을 하던 도중, 안드로이드 에뮬레이터를 실행시키려고 하니 빌드 에러가 발생했다. React-Native(expo) Node.js 18 버전 이상을 요구하는데, 나는 현재 16버전 사용중이라는 에러 로그를 발견할 수 있었다.",
+        cause:
+          "node -v 명령어를 입력하여 확인해본 결과, 나는 20 버전의 Node.js를 사용하고 있었다. 하지만 빌드 에러는 동일하게 계속 발생하였기 때문에 원인을 찾기 힘들었다. 보다 구체적인 원인을 찾기 위해 nvm ls 명령어를 입력해 보니, 현재 사용중인 20 버전 이외의 16 버전 Node.js가 시스템에 설치되어있었던 것을 발견할 수 있었다.",
+        solution:
+          "nvm uninstall 16.20.2(문제를 일으킨 버전) 명령어로 이전의 Node.js 버전을 삭제하고, Gradle의 빌드 캐시를 정리해주니 빌드가 성공하였고, 안드로이드 에뮬레이터가 정상작동하였다.",
+        link: "https://velog.io/@dpldpl/React-Native-expo-빌드-실패-문제-해결-Node.js-버전-충돌-문제-해결",
+      },
+    ],
   },
   {
     title: "씨네톡 (Cinetalk - 현재 개발중)",
