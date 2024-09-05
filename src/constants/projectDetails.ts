@@ -174,11 +174,22 @@ export const projectDetails = [
       {
         title: "React Native(expo) 빌드 실패 문제 해결: Node.js 버전 충돌",
         problem:
-          "React Native로 웹뷰 패키징을 하던 도중, 안드로이드 에뮬레이터를 실행시키려고 하니 빌드 에러가 발생했다. React-Native(expo) Node.js 18 버전 이상을 요구하는데, 나는 현재 16버전 사용중이라는 에러 로그를 발견할 수 있었다.",
+          "React Native(expo)로 웹뷰 패키징을 하던 도중, 안드로이드 에뮬레이터를 실행시키려고 하니 빌드 에러가 발생했다. React-Native(expo) Node.js 18 버전 이상을 요구하는데, 나는 현재 16버전 사용중이라는 에러 로그를 발견할 수 있었다.",
         cause:
           "node -v 명령어를 입력하여 확인해본 결과, 나는 20 버전의 Node.js를 사용하고 있었다. 하지만 빌드 에러는 동일하게 계속 발생하였기 때문에 원인을 찾기 힘들었다. 보다 구체적인 원인을 찾기 위해 nvm ls 명령어를 입력해 보니, 현재 사용중인 20 버전 이외의 16 버전 Node.js가 시스템에 설치되어있었던 것을 발견할 수 있었다.",
         solution:
           "nvm uninstall 16.20.2(문제를 일으킨 버전) 명령어로 이전의 Node.js 버전을 삭제하고, Gradle의 빌드 캐시를 정리해주니 빌드가 성공하였고, 안드로이드 에뮬레이터가 정상작동하였다.",
+        link: "https://velog.io/@dpldpl/React-Native-expo-빌드-실패-문제-해결-Node.js-버전-충돌-문제-해결",
+      },
+      {
+        title:
+          "React-Native(expo) Bare Workflow에서 앱 아이콘 설정: 네이티브 설정",
+        problem:
+          "React-Native(expo)로 개발한 웹뷰 앱의 앱 아이콘을 설정하고 있었다. expo 공식문서를 참고하여 app.json 파일에서의 icon 부분을 디자이너가 전해준 png 파일로 수정 하였지만, 앱의 아이콘이 변경되지 않는 이슈가 발생했다.",
+        cause:
+          "간편하게 앱을 개발할 수 있는 expo의 Managed Workflow 환경에서는 app.json의 icon을 수정해주는 것만으로 앱 아이콘을 변경할 수 있지만, 해당 Managed Workflow는 Node.js 낮은 버전만 지원하기 때문에(1번의 이슈에서 Node.js 16버전을 삭제했음.) Bare Workflow로 전환된 현재의 프로젝트는 app.json 파일을 수정하는 것으로 앱의 아이콘을 변경할 수 없었다.",
+        solution:
+          "Android와 같은 경우, android/app/src/main/res/mipmap-* 폴더에 다양한 해상도의 아이콘을 추가해 주었다. 이 폴더에는 mdpi, hdpi, xhdpi, xxhdpi, xxxhdpi 등의 해상도별 폴더가 있다. 각 폴더에 맞는 해상도의 아이콘 파일을 디자이너에게 요청하였고, 이를 반영한 결과 앱의 아이콘이 변경되는 것을 확인할 수 있었다.",
         link: "https://velog.io/@dpldpl/React-Native-expo-빌드-실패-문제-해결-Node.js-버전-충돌-문제-해결",
       },
     ],
