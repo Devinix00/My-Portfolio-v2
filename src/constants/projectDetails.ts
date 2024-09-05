@@ -190,7 +190,7 @@ export const projectDetails = [
           "간편하게 앱을 개발할 수 있는 expo의 Managed Workflow 환경에서는 app.json의 icon을 수정해주는 것만으로 앱 아이콘을 변경할 수 있지만, 해당 Managed Workflow는 Node.js 낮은 버전만 지원하기 때문에(1번의 이슈에서 Node.js 16버전을 삭제했음.) Bare Workflow로 전환된 현재의 프로젝트는 app.json 파일을 수정하는 것으로 앱의 아이콘을 변경할 수 없었다.",
         solution:
           "Android와 같은 경우, android/app/src/main/res/mipmap-* 폴더에 다양한 해상도의 아이콘을 추가해 주었다. 이 폴더에는 mdpi, hdpi, xhdpi, xxhdpi, xxxhdpi 등의 해상도별 폴더가 있다. 각 폴더에 맞는 해상도의 아이콘 파일을 디자이너에게 요청하였고, 이를 반영한 결과 앱의 아이콘이 변경되는 것을 확인할 수 있었다.",
-        link: "https://velog.io/@dpldpl/React-Native-expo-빌드-실패-문제-해결-Node.js-버전-충돌-문제-해결",
+        link: "https://velog.io/@dpldpl/React-Nativeexpo-Bare-Workflow에서-앱-아이콘-설정-네이티브-설정-문제-해결",
       },
     ],
   },
