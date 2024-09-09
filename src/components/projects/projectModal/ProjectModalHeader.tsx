@@ -1,6 +1,7 @@
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { projectDetails } from "../../../constants/projectDetails";
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface ProjectModalHeaderProps {
   activeTabIndex: number;
@@ -17,6 +18,7 @@ export default function ProjectModalHeader({
 }: ProjectModalHeaderProps) {
   const [widths, setWidths] = useState<(number | undefined)[]>([]);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const newWidths = tabRefs?.current.map((tab) => tab?.scrollWidth);
@@ -72,7 +74,10 @@ export default function ProjectModalHeader({
         </section>
       </section>
       <IoIosCloseCircleOutline
-        onClick={() => setIsModalOpened(false)}
+        onClick={() => {
+          navigate(-1);
+          setIsModalOpened(false);
+        }}
         className="w-12 h-12 cursor-pointer"
       />
     </section>

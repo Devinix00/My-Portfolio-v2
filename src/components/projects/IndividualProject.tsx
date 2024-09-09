@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import useHoveredIndex from "../../hooks/useHoveredIndex";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 interface IndividualProjectProps {
   project: Project;
@@ -21,6 +22,9 @@ export default function IndividualProject({
 }: IndividualProjectProps) {
   const { hoveredIndex, handleMouseEnter, handleMouseLeave, handleClick } =
     useHoveredIndex(i);
+  const location = useLocation();
+
+  const navigate = useNavigate();
 
   const calculateY = () => {
     if (!inView) {
@@ -35,7 +39,22 @@ export default function IndividualProject({
   const handleClickDetailButton = (i: number) => {
     setIsModalOpened(true);
     setModalIndex(i);
+    navigate(`${location.pathname}#modal`, { replace: false });
   };
+
+  useEffect(() => {
+    const handlePopState = () => {
+      if (!window.location.hash.includes("#modal")) {
+        setIsModalOpened(false);
+      }
+    };
+
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [setIsModalOpened]);
 
   return (
     <motion.div

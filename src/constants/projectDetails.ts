@@ -154,7 +154,7 @@ export const projectDetails = [
     ],
     myContributions: [
       "React-Native Webview 구성",
-      "댓글, 대댓글 기능 구현",
+      "댓글, 답글 기능 구현",
       "회원가입",
       "팔로워, 팔로잉 페이지 개발",
       "비밀번호 변경",
