@@ -11,7 +11,7 @@ export const projects = [
     imgSrc: "/images/logos/today_s_horoscope.png",
   },
   {
-    title: "휘뚜루 마뚜루 (외주)",
+    title: "휘뚜루마뚜루 (외주)",
     description: "시계와 명품에 관련된 커뮤니티 서비스입니다.",
     imgSrc: "/images/logos/hituru.png",
   },

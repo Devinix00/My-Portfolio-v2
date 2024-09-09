@@ -136,7 +136,7 @@ export const projectDetails = [
     ],
   },
   {
-    title: "휘뚜루 마뚜루",
+    title: "휘뚜루마뚜루",
     description:
       "시계와 명품에 관련된 커뮤니티 서비스입니다. 외주 개발 프리랜서 형식으로 기능 구현, 버그 해결 및 유지보수와 서비스 확장 개발을 하고 있습니다.",
     logoSrc: "/images/logos/hituru.png",
