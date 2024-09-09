@@ -39,7 +39,7 @@ export default function IndividualProject({
   const handleClickDetailButton = (i: number) => {
     setIsModalOpened(true);
     setModalIndex(i);
-    navigate(`${location.pathname}#modal`, { replace: false });
+    navigate(`${location.pathname}#modal`);
   };
 
   useEffect(() => {
