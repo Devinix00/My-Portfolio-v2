@@ -201,7 +201,7 @@ export const projectDetails = [
     logoSrc: "/images/logos/cinetalk.png",
     imgSrc: "/images/projects/cinetalk.png",
     gitHub: "https://github.com/Devinix00/cinetalk-front",
-    siteUrl: "https://cinetalk-front-dev.vercel.app",
+    siteUrl: "https://dev.cinetalk.site",
     techStacks: [
       "Next.Js (App router)",
       "Typescript",
