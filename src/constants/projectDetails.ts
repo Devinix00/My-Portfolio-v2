@@ -195,13 +195,13 @@ export const projectDetails = [
     ],
   },
   {
-    title: "씨네톡 (Cinetalk - 현재 개발중)",
+    title: "씨네톡",
     description:
       "씨네톡 (Cinetalk)은 영화에 대한 자세한 정보와 사용자 리뷰를 제공하는 서비스입니다. 영화에 대한 키워드, 리뷰로 유저에게 영화를 추천합니다.",
     logoSrc: "/images/logos/cinetalk.png",
     imgSrc: "/images/projects/cinetalk.png",
     gitHub: "https://github.com/Devinix00/cinetalk-front",
-    siteUrl: "https://dev.cinetalk.site",
+    siteUrl: "https://www.cinetalk.site",
     techStacks: [
       "Next.Js (App router)",
       "Typescript",
