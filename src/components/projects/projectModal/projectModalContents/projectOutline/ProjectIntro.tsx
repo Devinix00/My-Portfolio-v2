@@ -3,6 +3,7 @@ import { projectDetails } from "../../../../../constants/projectDetails";
 import { FaGithub, FaGooglePlay } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import React from "react";
+import { FaAppStore } from "react-icons/fa";
 
 interface ProjectIntroProps {
   modalIndex: number | null;
@@ -43,12 +44,32 @@ function ProjectIntro({ modalIndex }: ProjectIntroProps) {
             {modalIndex === 1 && (
               <Link
                 target="_BLANK"
-                to={projectDetails[modalIndex].googlePlayStoreURl as string}
+                to={projectDetails[modalIndex].googlePlayStoreUrl as string}
                 className="flex flex-col items-center cursor-pointer"
               >
                 <FaGooglePlay className="w-10 h-10 border-[1px] border-slate-400 py-2 pl-1 rounded-full" />
                 <p>플레이스토어</p>
               </Link>
+            )}
+            {modalIndex === 2 && (
+              <>
+                <Link
+                  target="_BLANK"
+                  to={projectDetails[modalIndex].googlePlayStoreUrl as string}
+                  className="flex flex-col items-center cursor-pointer"
+                >
+                  <FaGooglePlay className="w-10 h-10 border-[1px] border-slate-400 py-2 pl-1 rounded-full" />
+                  <p>플레이스토어</p>
+                </Link>
+                <Link
+                  target="_BLANK"
+                  to={projectDetails[modalIndex].appStoreUrl as string}
+                  className="flex flex-col items-center cursor-pointer"
+                >
+                  <FaAppStore className="w-10 h-10 rounded-full" />
+                  <p>앱스토어</p>
+                </Link>
+              </>
             )}
           </section>
         </React.Fragment>

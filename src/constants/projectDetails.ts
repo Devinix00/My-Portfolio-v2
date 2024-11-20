@@ -71,7 +71,7 @@ export const projectDetails = [
     logoSrc: "/images/logos/today_s_horoscope.png",
     imgSrc: "/images/projects/today_s_horoscope.png",
     gitHub: "https://github.com/Devinix00/today-s-horoscope",
-    googlePlayStoreURl:
+    googlePlayStoreUrl:
       "https://play.google.com/store/apps/details?id=com.exodus.fortune",
     siteUrl: "",
     techStacks: [
@@ -142,6 +142,9 @@ export const projectDetails = [
     logoSrc: "/images/logos/hituru.png",
     imgSrc: "/images/projects/hituru.png",
     siteUrl: "https://www.hituru.com",
+    appStoreUrl: "https://apps.apple.com/kr/app/휘뚜루마뚜루/id6736851732",
+    googlePlayStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.starbeauty.huituruwebviewapp&hl=ko",
     techStacks: [
       "Next.Js",
       "React-Native (expo)",
