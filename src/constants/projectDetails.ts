@@ -192,6 +192,17 @@ export const projectDetails = [
           "Android와 같은 경우, android/app/src/main/res/mipmap-* 폴더에 다양한 해상도의 아이콘을 추가해 주었다. 이 폴더에는 mdpi, hdpi, xhdpi, xxhdpi, xxxhdpi 등의 해상도별 폴더가 있다. 각 폴더에 맞는 해상도의 아이콘 파일을 디자이너에게 요청하였고, 이를 반영한 결과 앱의 아이콘이 변경되는 것을 확인할 수 있었다.",
         link: "https://velog.io/@dpldpl/React-Nativeexpo-Bare-Workflow에서-앱-아이콘-설정-네이티브-설정-문제-해결",
       },
+      {
+        title:
+          "React Native WebView에서 커스텀 userAgent 사용 시 뒤로 가기(goBack) 이슈 해결",
+        problem:
+          "안드로이드 웹뷰 앱은 안드로이드 기기의 물리적 뒤로가기 버튼에 대응할 수 있어야 한다. 따라서 웹뷰의 Ref의 canGoBack 상태를 이용하여, 페이지 히스토리에 따라 뒤로가기 기능을 구현하려고 하였으나 메인페이지 진입 후 첫 다른 페이지를 접속하면 true여야 할 canGoBack 상태가 false로 나오는 이슈가 발생하였다.",
+        cause:
+          "이 문제는 웹뷰의 userAgent를 커스터마이징하면서 발생했다. 웹뷰에서 userAgent가 변경된 경우 초기 URL 로드와 히스토리 관리가 정상적으로 이루어지지 않았기 때문에 웹뷰의 canGoBack 상태가 제대로 업데이트되지 않는 결과로 이어졌다.",
+        solution:
+          "사이트의 url을 상태로 관리하여, 초기 웹뷰 진입 시 about:blank 경로로 초기화를 시켜주고 이후 웹뷰 로드가 완료되었을 때 실제 사이트의 url로 다시 바꿔주어 이슈를 해결할 수 있었다.",
+        link: "https://velog.io/@dpldpl/React-Native-WebView에서-커스텀-userAgent-사용-시-뒤로-가기goBack-이슈-해결-문제-해결",
+      },
     ],
   },
   {
