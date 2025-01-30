@@ -1,140 +1,30 @@
-export const projectDetails = [
-  {
-    title: "모두의 텃밭",
-    description:
-      "전국의 텃밭을 조회, 등록하고, 분양하는 웹 서비스입니다. 커뮤니티, 지도, 채팅 기능이 포함되어있습니다.",
-    logoSrc: "/images/logos/everyone_s_garden.png",
-    imgSrc: "/images/projects/everyone_s_garden.png",
-    gitHub: "https://github.com/Devinix00/everyone-s-garden-front",
-    siteUrl: "https://www.everyones-garden.com/",
-    techStacks: [
-      "React",
-      "Typescript",
-      "Chakra UI",
-      "Axios",
-      "React-Query",
-      "Zustand",
-    ],
-    myContributions: [
-      "카카오, 네이버 소셜 로그인",
-      "지역 검색 (네이버 지도 위치 이동)",
-      "네이버 지도 기반 내 위치 (geolocation)",
-      "위도와 경도를 조작하여 텃밭 조회 (마커 클러스터링 적용)",
-      "사이드 바 텃밭 무한 스크롤 조회",
-      "텃밭 신고, 찜하기, 신청하기",
-    ],
-    myContributionsDetails: [
-      "리다이렉트 페이지의 쿼리스트링에 포함된 토큰 값을 백엔드 서버로 전송합니다. 백엔드 서버는 응답으로 access token을 응답 body에, refresh token을 http only 쿠키에 저장하여 반환합니다. access token의 만료기간이 10분이기 때문에 애플리케이션의 진입점에서 setInterval을 사용하여 9분마다 토큰 갱신 요청을 보냈습니다. 또한, 페이지가 새로고침되거나 시간이 지난 뒤에 다시 접속했을 때도 로그인 상태가 유지되도록 하기 위해 Zustand-Persist를 사용하여 로그인 전역 상태를 관리했습니다. 로그인 상태가 true일 경우 자동으로 토큰 갱신 요청을 보내어 자동 로그인을 구현하였습니다.",
-      "지도 페이지에서 사용자가 지역을 검색하여 해당 지역의 텃밭 정보를 쉽게 조회할 수 있도록 지역 검색 기능을 구현했습니다. input의 value가 변경될 때마다 요청을 보내는 대신, 과도한 요청을 방지하기 위해 debounce 기법을 적용했습니다.",
-      "유저가 지도 페이지에 진입할 때 geolocation을 통해 가져온 유저의 위도, 경도를 기반으로 네이버 지도를 렌더링합니다. 또한, 현재 사용자의 위치 정보를 마커로 표시합니다.",
-      "지도의 위치가 바뀔때마다 지도의 가장자리 네 부분의 위도, 경도를 쿼리스트링에 포함시켜 서버에 요청을 보내 지도에서 보이는 영역의 텃밭 데이터를 받습니다. 이 텃밭 데이터는 MarkerClustering 객체를 이용하여 마커 클러스터링을 적용하였습니다.",
-      "지도의 가장자리 위도와 경도를 통해 조회하는 텃밭들을 사이드바에서 무한 스크롤의 형태로 구현하였습니다. 이를 위해 React-Query의 useInfiniteQuery를 활용하였습니다.",
-      "React-Query의 useMutation 훅을 이용해 로딩 스피너를 처리하였습니다. 신청하기와 같은 경우에는 별 다른 서버의 요청 없이 href='tel:'을 이용하여 모바일 환경에서 텃밭을 등록한 유저의 번호로 전화를 걸 수 있게 구현하였으며, 채팅하기 버튼을 누르면 채팅방으로 이동하게 됩니다.",
-    ],
-    troubleShootings: [
-      {
-        title: "framer-motion과 transform 중앙 정렬",
-        problem:
-          "left와 transform을 Chakra UI 컴포넌트의 props로 전달하여 좌우 중앙정렬 하고 있었으나, framer-motion의 애니메이션을 추가하고 난 후 컴포넌트의 위치가 올바르게 조정되지 않는 이슈가 발생했다.",
-        cause:
-          "framer-motion을 사용할 때 x와 y 속성으로 애니메이션을 설정하면, 내부적으로 transform: translateX()와 transform: translateY()가 적용되는 것이 원인이었다. 이 경우, 기존의 CSS transform: translateX(-50%)와 충돌하여 CopyBox의 중앙 정렬이 제대로 이루어지지 않았던 것이다.",
-        solution:
-          "애니메이션 초기(initial)에 x:'50%'을 명시적으로 추가해서 transform 속성이 올바르게 적용되도록 조정하니 다시 중앙 정렬이 된 모습을 볼 수 있었다.",
-        link: "https://velog.io/@dpldpl/framer-motion과-transform-중앙-정렬-문제-해결#해결-과정",
-      },
-      {
-        title: "React 이벤트 처리 순서",
-        problem:
-          "사용자가 지도상의 지역을 선택하는 UI 컴포넌트를 클릭했을 때 지도 이동이나 지역 정보 업데이트가 예상대로 진행되지 않는 문제가 발생했다. 로깅 콘솔 자체도 출력이 되지 않았던 것으로 보았을 때, handleClickList 함수가 호출되지 않은 것으로 추정되었다.",
-        cause:
-          "이 문제의 원인은 SearchRegionsListText 컴포넌트(혹은 Input 외부)가 클릭될 때 Input 컴포넌트의 focus가 해제되어 onBlur 이벤트가 발생하고 isInputFocused 상태가 false로 업데이트 되면서 SearchRegionsList가 언마운트되었기 때문이다. 결과적으로 SearchRegionsListText 내부의 handleClickList 함수가 호출되지 못했다.",
-        solution:
-          "이 문제를 해결하기 위해 (setIsInputFocused(false))를 250밀리초 지연시키는 방법을 적용했다. 이 지연은 onClick 이벤트가 처리될 충분한 시간을 제공하여, 사용자의 클릭 동작이 완전히 처리된 후 focus 상실이 이루어지도록 보장했다.",
-        link: "https://velog.io/@dpldpl/React-이벤트-처리-순서와-비동기적-상태-업데이트-문제-해결",
-      },
-      {
-        title: "리액트 컴포넌트의 리렌더링과 state",
-        problem:
-          "리액트 컴포넌트에서 garden?.gardenLikeId를 기반으로 isGardenLiked 상태가 계산되며, 이는 사용자가 정원을 '좋아요' 했는지 여부를 나타내고 있는 상황이다. 이 값에 따라 '찜하기' 버튼의 상태가 변경되어야 하는데, liked라는 내부 상태가 초기에 한 번 설정된 후 자동으로 업데이트되지 않아 isGardenLiked와 liked의 값이 일치하지 않는 문제가 발생했다.",
-        cause:
-          "이 문제의 원인은 리액트 상태 관리의 특성에서 기인하였다. 리액트에서는 상태가 변경되면 해당 상태에 의존하는 컴포넌트의 리렌더링이 트리거된다. 그러나, 상태 초기화는 컴포넌트가 마운트될 때 단 한 번만 발생하며, 이후에는 상태 업데이트 함수를 호출하지 않는 한 기존 상태가 유지된다. useState로 선언된 liked 상태는 외부에서 gardenLikeId가 변경되어도 자동으로 업데이트되지 않기 때문에, isGardenLiked의 변경이 liked에 반영되지 않는 것이었다.",
-        solution:
-          "이 문제를 해결하기 위해 useEffect를 사용하여 gardenLikeId의 변경을 감지하고, 이에 따라 liked 상태를 업데이트하는 방법을 구현했다. useEffect 내에서 gardenLikeId를 의존성 배열로 설정하여, 해당 값이 변경될 때마다 liked 상태를 적절히 업데이트하도록 했다.",
-        link: "https://velog.io/@dpldpl/리액트-컴포넌트의-리렌더링과-state-문제-해결",
-      },
-    ],
-  },
-  {
-    title: "오늘의 운세",
-    description:
-      "유저의 생년월일, MBTI를 이용해 운세를 제공하는 모바일 앱입니다. ChatGPT API를 이용하여 유저의 운세 데이터를 받아오며, 유저들에게 오늘의 한마디를 푸시 메세지로 제공합니다.",
-    logoSrc: "/images/logos/today_s_horoscope.png",
-    imgSrc: "/images/projects/today_s_horoscope.png",
-    gitHub: "https://github.com/Devinix00/today-s-horoscope",
-    googlePlayStoreUrl:
-      "https://play.google.com/store/apps/details?id=com.exodus.fortune",
-    siteUrl: "",
-    techStacks: [
-      "Turborepo",
-      "React-Native (expo)",
-      "Firebase Cloud Messaging (FCM)",
-      "React",
-      "Next.Js (App router) (admin)",
-      "Typescript",
-      "Tailwind CSS (admin)",
-      "SCSS",
-      "React-Query",
-      "Zustand",
-    ],
-    myContributions: [
-      "Turborepo를 이용하여 모노레포 구성",
-      "React-Native Webview 구성",
-      "Android 물리적 뒤로가기 구현",
-      "푸시 메세지 구현",
-      "어드민 페이지 개발",
-    ],
-    myContributionsDetails: [
-      "웹뷰로 구성되는 애플리케이션의 특성을 고려하여, 기존의 멀티 레포 형식 대신 하나의 레포지토리에서 여러 프로젝트를 관리하는 것이 더 효율적이라고 판단하였습니다. 이를 위해 Vercel의 Turborepo를 사용하여 모노레포를 구성하였습니다.",
-      "react-native-webview 라이브러리를 사용하여 웹뷰 애플리케이션을 구성하였습니다. 네트워크 연결이 없는 환경에서도 대응할 수 있도록 @react-native-community/netinfo 라이브러리를 활용하였습니다.",
-      "웹뷰 애플리케이션은 안드로이드 환경에서 물리적 뒤로가기 버튼이 작동하지 않기 때문에 이에 대한 대응이 필요했습니다. 뒤로가기 함수를 정의하고, useEffect를 이용하여 물리적 뒤로가기 이벤트에 등록하였습니다. 웹뷰 내비게이션 상태 변경 시 호출되는 핸들러(url 갱신 함수)를 정의하여 Webview 컴포넌트의 onNavigationStateChange props로 전달하였고, 메인 화면에서는 뒤로가기 버튼을 눌렀을 때 토스트를 띄우고, 2초 내로 한 번 더 누를 시 애플리케이션을 종료하는 로직을 구현하였습니다.",
-      "Firebase Cloud Messaging(FCM)과 @react-native-firebase/messaging 라이브러리를 사용하여 푸시 메시지를 구현하였습니다. 파이어베이스 콘솔에서 푸시 메시지를 보내는 대신, DB에 저장된 '오늘의 한마디'를 푸시 메시지로 받아야 했기 때문에, 디바이스 토큰을 서버로 전송하는 API 통신을 추가로 구현하였습니다.",
-      "오늘의 운세 애플리케이션은 ChatGPT API를 통해 운세 데이터를 받아옵니다. 이를 위해 어드민 페이지가 필요하였습니다. 어드민페이지에서는 프롬프트를 관리하고 프롬프트 히스토리를 조회할 수 있으며, 푸시 메시지의 발송 기간을 설정하고, 특정 일자나 기간 동안의 운세 데이터를 한 번에 생성할 수 있습니다. 또한 프롬프트를 통해 미리 생성된 콘텐츠는 날짜별 페이지네이션 형식으로 구현되어있어 손쉽게 조회, 관리 및 수정이 가능합니다.",
-    ],
-    troubleShootings: [
-      {
-        title: "NPM 의존성 문제 해결: @rollup/rollup-linux-x64-gnu",
-        problem:
-          "vercel에서 React로 만든 웹을 배포하려고 했는데, 빌드 에러가 발생했다. 번들러로 사용되는 Rollup 관련 패키지가 제대로 설치되지 않았다고 한다. 특히, @rollup/rollup-linux-x64-gnu에 관련된 에러가 발생하고 있었다. 로컬환경에서 빌드시에는 아무런 문제가 없이 성공했는데, vercel에서 빌드할때에는 에러가 계속되었다.",
-        cause:
-          "이 문제의 근본 원인은 npm의 의존성 관리 방식에 있었다. npm은 프로젝트의 package.json 파일에 명시된 의존성을 기반으로 패키지를 설치하지만, 때로는 특정 플랫폼 또는 아키텍처에 최적화된 패키지가 선택적 의존성으로 관리되어 자동 설치되지 않는 경우가 있다고 한다. 이 경우, 해당 환경에서만 필요로 하는 특수 패키지(@rollup/rollup-linux-x64-gnu 같은)가 설치 과정에서 누락되었던 것이 원인이었던 것 같다.",
-        solution:
-          "문제를 해결하기 위해 루트 디렉토리에 존재하는 package.json파일의 scripts에 postinstall 설정을 추가했다. postinstall는 npm install이 완료된 후 자동으로 실행되는 스크립트로, 필요한 추가 작업을 수행할 수 있다고 한다. 여기서는 Rollup과 그 플러그인들을 설치하는 명령을 추가했다. 이를 통해 모든 필수 패키지가 설치되도록 보장했다.",
-        link: "https://velog.io/@dpldpl/NPM-의존성-문제-해결-rolluprollup-linux-x64-gnu-이슈-문제-해결",
-      },
-      {
-        title:
-          "React Native Webview: URL 상태 관리를 통한 안드로이드 뒤로 가기 동기화",
-        problem:
-          "내부 웹 페이지의 뒤로 가기 UI와 Android의 하드웨어 뒤로 가기 버튼 간의 상태 불일치 문제가 발생했다. 사용자가 웹뷰 내부의 뒤로 가기 버튼을 통해 페이지를 변경한 후 Android의 뒤로 가기 버튼을 누르면, 예상과 달리 이전 페이지로 이동하지 않고 웹뷰 내의 최초 페이지로 이동해야 하는 상황에서도 이전 페이지로 돌아가 버리는 문제가 발생했다.",
-        cause:
-          "이 문제의 주요 원인은 Android 시스템의 뒤로 가기 버튼이 WebView의 네비게이션 상태 변화를 인식하지 못하여 WebView 내부에서 발생한 네비게이션 이벤트를 외부 Android 뒤로 가기 동작과 동기화하지 못했기 때문이다. 결과적으로, WebView의 canGoBack() 상태와 실제 웹 페이지의 위치가 일치하지 않는 상황이 발생한 것이다.",
-        solution:
-          "문제를 해결하기 위해 먼저 WebView 컴포넌트의 onNavigationStateChange 이벤트를 활용하여 현재 URL을 상태로 저장하고 관리하는 방법을 적용했다. 이를 통해 WebView에서 발생하는 모든 페이지 변경을 실시간으로 추적할 수 있게 되었다. 또한, WebView의 현재 URL 상태를 기반으로 하드웨어 뒤로 가기 버튼의 동작을 조건적으로 처리하여, 사용자가 최상위 페이지에 있을 때만 앱을 종료하거나 추가적인 토스트를 표시하도록 로직을 구현했다.",
-        link: "https://velog.io/@dpldpl/React-Native-Webview-URL-상태-관리를-통한-안드로이드-뒤로-가기-동기화",
-      },
-      {
-        title:
-          "React-Native (expo) firebase fcm 푸시 메세지 디바이스에서 나오지 않는 이슈 해결",
-        problem:
-          "파이어베이스 콘솔에서 메세지를 보낼때 안드로이드 에뮬레이터에서는 푸시메세지가 잘 작동하였는데, apk 파일로 빌드해서 실제 디바이스에서 테스트 해보니 푸시메세지가 오지 않는 이슈가 발생했다. SHA-1, SHA-256과 같은 인증서 지문의 문제일까 싶어서 파이어베이스와 expo.dev에서 값들을 확인해 봤는데 정확히 일치되어있어서 원인을 파악하기가 힘들었다.",
-        cause:
-          "원인을 파악하기 위해 expo-dev-client를 도입하여 재 빌드를 해보니 이전에는 확인할 수 없는 빌드 에러가 발생하였고, 이를 해석해보니 google-services.json 파일이 누락되었다고 하였다. EAS 빌드는 깃에서 추적하는 파일만 업로드한다고 한다. gitignore 파일에 google-services.json 파일을 추가한 것이 원인이었다.",
-        solution:
-          "google-services.json 파일을 gitignore에서 google-services.json을 주석처리하니 빌드에 성공했고, 푸시 메세지도 잘 작동하였다.",
-        link: "https://velog.io/@dpldpl/React-Native-expo-firebase-fcm-푸시-메세지-디바이스에서-나오지-않는-이슈-해결-문제-해결",
-      },
-    ],
-  },
+type ImageOrientation = "landscape" | "portrait";
+
+interface TroubleShooting {
+  title: string;
+  problem: string;
+  cause: string;
+  solution: string;
+  link: string;
+}
+
+interface ProjectDetail {
+  title: string;
+  description: string;
+  logoSrc: string;
+  imgSrc: string;
+  gitHub?: string;
+  siteUrl: string;
+  appStoreUrl?: string;
+  googlePlayStoreUrl?: string;
+  techStacks: string[];
+  myContributions: string[];
+  myContributionsDetails: string[];
+  troubleShootings: TroubleShooting[];
+  imageOrientation: ImageOrientation;
+}
+
+export const projectDetails: ProjectDetail[] = [
   {
     title: "휘뚜루마뚜루",
     description:
@@ -207,6 +97,145 @@ export const projectDetails = [
         link: "https://velog.io/@dpldpl/React-Native-WebView에서-커스텀-userAgent-사용-시-뒤로-가기goBack-이슈-해결-문제-해결",
       },
     ],
+    imageOrientation: "landscape",
+  },
+  {
+    title: "모두의 텃밭",
+    description:
+      "전국의 텃밭을 조회, 등록하고, 분양하는 웹 서비스입니다. 커뮤니티, 지도, 채팅 기능이 포함되어있습니다.",
+    logoSrc: "/images/logos/everyone_s_garden.png",
+    imgSrc: "/images/projects/everyone_s_garden.png",
+    gitHub: "https://github.com/Devinix00/everyone-s-garden-front",
+    siteUrl: "https://www.everyones-garden.com/",
+    techStacks: [
+      "React",
+      "Typescript",
+      "Chakra UI",
+      "Axios",
+      "React-Query",
+      "Zustand",
+    ],
+    myContributions: [
+      "카카오, 네이버 소셜 로그인",
+      "지역 검색 (네이버 지도 위치 이동)",
+      "네이버 지도 기반 내 위치 (geolocation)",
+      "위도와 경도를 조작하여 텃밭 조회 (마커 클러스터링 적용)",
+      "사이드 바 텃밭 무한 스크롤 조회",
+      "텃밭 신고, 찜하기, 신청하기",
+    ],
+    myContributionsDetails: [
+      "리다이렉트 페이지의 쿼리스트링에 포함된 토큰 값을 백엔드 서버로 전송합니다. 백엔드 서버는 응답으로 access token을 응답 body에, refresh token을 http only 쿠키에 저장하여 반환합니다. access token의 만료기간이 10분이기 때문에 애플리케이션의 진입점에서 setInterval을 사용하여 9분마다 토큰 갱신 요청을 보냈습니다. 또한, 페이지가 새로고침되거나 시간이 지난 뒤에 다시 접속했을 때도 로그인 상태가 유지되도록 하기 위해 Zustand-Persist를 사용하여 로그인 전역 상태를 관리했습니다. 로그인 상태가 true일 경우 자동으로 토큰 갱신 요청을 보내어 자동 로그인을 구현하였습니다.",
+      "지도 페이지에서 사용자가 지역을 검색하여 해당 지역의 텃밭 정보를 쉽게 조회할 수 있도록 지역 검색 기능을 구현했습니다. input의 value가 변경될 때마다 요청을 보내는 대신, 과도한 요청을 방지하기 위해 debounce 기법을 적용했습니다.",
+      "유저가 지도 페이지에 진입할 때 geolocation을 통해 가져온 유저의 위도, 경도를 기반으로 네이버 지도를 렌더링합니다. 또한, 현재 사용자의 위치 정보를 마커로 표시합니다.",
+      "지도의 위치가 바뀔때마다 지도의 가장자리 네 부분의 위도, 경도를 쿼리스트링에 포함시켜 서버에 요청을 보내 지도에서 보이는 영역의 텃밭 데이터를 받습니다. 이 텃밭 데이터는 MarkerClustering 객체를 이용하여 마커 클러스터링을 적용하였습니다.",
+      "지도의 가장자리 위도와 경도를 통해 조회하는 텃밭들을 사이드바에서 무한 스크롤의 형태로 구현하였습니다. 이를 위해 React-Query의 useInfiniteQuery를 활용하였습니다.",
+      "React-Query의 useMutation 훅을 이용해 로딩 스피너를 처리하였습니다. 신청하기와 같은 경우에는 별 다른 서버의 요청 없이 href='tel:'을 이용하여 모바일 환경에서 텃밭을 등록한 유저의 번호로 전화를 걸 수 있게 구현하였으며, 채팅하기 버튼을 누르면 채팅방으로 이동하게 됩니다.",
+    ],
+    troubleShootings: [
+      {
+        title: "framer-motion과 transform 중앙 정렬",
+        problem:
+          "left와 transform을 Chakra UI 컴포넌트의 props로 전달하여 좌우 중앙정렬 하고 있었으나, framer-motion의 애니메이션을 추가하고 난 후 컴포넌트의 위치가 올바르게 조정되지 않는 이슈가 발생했다.",
+        cause:
+          "framer-motion을 사용할 때 x와 y 속성으로 애니메이션을 설정하면, 내부적으로 transform: translateX()와 transform: translateY()가 적용되는 것이 원인이었다. 이 경우, 기존의 CSS transform: translateX(-50%)와 충돌하여 CopyBox의 중앙 정렬이 제대로 이루어지지 않았던 것이다.",
+        solution:
+          "애니메이션 초기(initial)에 x:'50%'을 명시적으로 추가해서 transform 속성이 올바르게 적용되도록 조정하니 다시 중앙 정렬이 된 모습을 볼 수 있었다.",
+        link: "https://velog.io/@dpldpl/framer-motion과-transform-중앙-정렬-문제-해결#해결-과정",
+      },
+      {
+        title: "React 이벤트 처리 순서",
+        problem:
+          "사용자가 지도상의 지역을 선택하는 UI 컴포넌트를 클릭했을 때 지도 이동이나 지역 정보 업데이트가 예상대로 진행되지 않는 문제가 발생했다. 로깅 콘솔 자체도 출력이 되지 않았던 것으로 보았을 때, handleClickList 함수가 호출되지 않은 것으로 추정되었다.",
+        cause:
+          "이 문제의 원인은 SearchRegionsListText 컴포넌트(혹은 Input 외부)가 클릭될 때 Input 컴포넌트의 focus가 해제되어 onBlur 이벤트가 발생하고 isInputFocused 상태가 false로 업데이트 되면서 SearchRegionsList가 언마운트되었기 때문이다. 결과적으로 SearchRegionsListText 내부의 handleClickList 함수가 호출되지 못했다.",
+        solution:
+          "이 문제를 해결하기 위해 (setIsInputFocused(false))를 250밀리초 지연시키는 방법을 적용했다. 이 지연은 onClick 이벤트가 처리될 충분한 시간을 제공하여, 사용자의 클릭 동작이 완전히 처리된 후 focus 상실이 이루어지도록 보장했다.",
+        link: "https://velog.io/@dpldpl/React-이벤트-처리-순서와-비동기적-상태-업데이트-문제-해결",
+      },
+      {
+        title: "리액트 컴포넌트의 리렌더링과 state",
+        problem:
+          "리액트 컴포넌트에서 garden?.gardenLikeId를 기반으로 isGardenLiked 상태가 계산되며, 이는 사용자가 정원을 '좋아요' 했는지 여부를 나타내고 있는 상황이다. 이 값에 따라 '찜하기' 버튼의 상태가 변경되어야 하는데, liked라는 내부 상태가 초기에 한 번 설정된 후 자동으로 업데이트되지 않아 isGardenLiked와 liked의 값이 일치하지 않는 문제가 발생했다.",
+        cause:
+          "이 문제의 원인은 리액트 상태 관리의 특성에서 기인하였다. 리액트에서는 상태가 변경되면 해당 상태에 의존하는 컴포넌트의 리렌더링이 트리거된다. 그러나, 상태 초기화는 컴포넌트가 마운트될 때 단 한 번만 발생하며, 이후에는 상태 업데이트 함수를 호출하지 않는 한 기존 상태가 유지된다. useState로 선언된 liked 상태는 외부에서 gardenLikeId가 변경되어도 자동으로 업데이트되지 않기 때문에, isGardenLiked의 변경이 liked에 반영되지 않는 것이었다.",
+        solution:
+          "이 문제를 해결하기 위해 useEffect를 사용하여 gardenLikeId의 변경을 감지하고, 이에 따라 liked 상태를 업데이트하는 방법을 구현했다. useEffect 내에서 gardenLikeId를 의존성 배열로 설정하여, 해당 값이 변경될 때마다 liked 상태를 적절히 업데이트하도록 했다.",
+        link: "https://velog.io/@dpldpl/리액트-컴포넌트의-리렌더링과-state-문제-해결",
+      },
+    ],
+    imageOrientation: "landscape",
+  },
+  {
+    title: "오늘의 운세",
+    description:
+      "유저의 생년월일, MBTI를 이용해 운세를 제공하는 모바일 앱입니다. ChatGPT API를 이용하여 유저의 운세 데이터를 받아오며, 유저들에게 오늘의 한마디를 푸시 메세지로 제공합니다.",
+    logoSrc: "/images/logos/today_s_horoscope.png",
+    imgSrc: "/images/projects/today_s_horoscope.png",
+    gitHub: "https://github.com/Devinix00/today-s-horoscope",
+    googlePlayStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.exodus.fortune",
+    siteUrl: "",
+    techStacks: [
+      "Turborepo",
+      "React-Native (expo)",
+      "Firebase Cloud Messaging (FCM)",
+      "React",
+      "Next.Js (App router) (admin)",
+      "Typescript",
+      "Tailwind CSS (admin)",
+      "SCSS",
+      "React-Query",
+      "Zustand",
+    ],
+    myContributions: [
+      "Turborepo를 이용하여 모노레포 구성",
+      "React-Native Webview 구성",
+      "Android 물리적 뒤로가기 구현",
+      "푸시 메세지 구현",
+      "어드민 페이지 개발",
+    ],
+    myContributionsDetails: [
+      "웹뷰로 구성되는 애플리케이션의 특성을 고려하여, 기존의 멀티 레포 형식 대신 하나의 레포지토리에서 여러 프로젝트를 관리하는 것이 더 효율적이라고 판단하였습니다. 이를 위해 Vercel의 Turborepo를 사용하여 모노레포를 구성하였습니다.",
+      "react-native-webview 라이브러리를 사용하여 웹뷰 애플리케이션을 구성하였습니다. 네트워크 연결이 없는 환경에서도 대응할 수 있도록 @react-native-community/netinfo 라이브러리를 활용하였습니다.",
+      "웹뷰 애플리케이션은 안드로이드 환경에서 물리적 뒤로가기 버튼이 작동하지 않기 때문에 이에 대한 대응이 필요했습니다. 뒤로가기 함수를 정의하고, useEffect를 이용하여 물리적 뒤로가기 이벤트에 등록하였습니다. 웹뷰 내비게이션 상태 변경 시 호출되는 핸들러(url 갱신 함수)를 정의하여 Webview 컴포넌트의 onNavigationStateChange props로 전달하였고, 메인 화면에서는 뒤로가기 버튼을 눌렀을 때 토스트를 띄우고, 2초 내로 한 번 더 누를 시 애플리케이션을 종료하는 로직을 구현하였습니다.",
+      "Firebase Cloud Messaging(FCM)과 @react-native-firebase/messaging 라이브러리를 사용하여 푸시 메시지를 구현하였습니다. 파이어베이스 콘솔에서 푸시 메시지를 보내는 대신, DB에 저장된 '오늘의 한마디'를 푸시 메시지로 받아야 했기 때문에, 디바이스 토큰을 서버로 전송하는 API 통신을 추가로 구현하였습니다.",
+      "오늘의 운세 애플리케이션은 ChatGPT API를 통해 운세 데이터를 받아옵니다. 이를 위해 어드민 페이지가 필요하였습니다. 어드민페이지에서는 프롬프트를 관리하고 프롬프트 히스토리를 조회할 수 있으며, 푸시 메시지의 발송 기간을 설정하고, 특정 일자나 기간 동안의 운세 데이터를 한 번에 생성할 수 있습니다. 또한 프롬프트를 통해 미리 생성된 콘텐츠는 날짜별 페이지네이션 형식으로 구현되어있어 손쉽게 조회, 관리 및 수정이 가능합니다.",
+    ],
+    troubleShootings: [
+      {
+        title: "NPM 의존성 문제 해결: @rollup/rollup-linux-x64-gnu",
+        problem:
+          "vercel에서 React로 만든 웹을 배포하려고 했는데, 빌드 에러가 발생했다. 번들러로 사용되는 Rollup 관련 패키지가 제대로 설치되지 않았다고 한다. 특히, @rollup/rollup-linux-x64-gnu에 관련된 에러가 발생하고 있었다. 로컬환경에서 빌드시에는 아무런 문제가 없이 성공했는데, vercel에서 빌드할때에는 에러가 계속되었다.",
+        cause:
+          "이 문제의 근본 원인은 npm의 의존성 관리 방식에 있었다. npm은 프로젝트의 package.json 파일에 명시된 의존성을 기반으로 패키지를 설치하지만, 때로는 특정 플랫폼 또는 아키텍처에 최적화된 패키지가 선택적 의존성으로 관리되어 자동 설치되지 않는 경우가 있다고 한다. 이 경우, 해당 환경에서만 필요로 하는 특수 패키지(@rollup/rollup-linux-x64-gnu 같은)가 설치 과정에서 누락되었던 것이 원인이었던 것 같다.",
+        solution:
+          "문제를 해결하기 위해 루트 디렉토리에 존재하는 package.json파일의 scripts에 postinstall 설정을 추가했다. postinstall는 npm install이 완료된 후 자동으로 실행되는 스크립트로, 필요한 추가 작업을 수행할 수 있다고 한다. 여기서는 Rollup과 그 플러그인들을 설치하는 명령을 추가했다. 이를 통해 모든 필수 패키지가 설치되도록 보장했다.",
+        link: "https://velog.io/@dpldpl/NPM-의존성-문제-해결-rolluprollup-linux-x64-gnu-이슈-문제-해결",
+      },
+      {
+        title:
+          "React Native Webview: URL 상태 관리를 통한 안드로이드 뒤로 가기 동기화",
+        problem:
+          "내부 웹 페이지의 뒤로 가기 UI와 Android의 하드웨어 뒤로 가기 버튼 간의 상태 불일치 문제가 발생했다. 사용자가 웹뷰 내부의 뒤로 가기 버튼을 통해 페이지를 변경한 후 Android의 뒤로 가기 버튼을 누르면, 예상과 달리 이전 페이지로 이동하지 않고 웹뷰 내의 최초 페이지로 이동해야 하는 상황에서도 이전 페이지로 돌아가 버리는 문제가 발생했다.",
+        cause:
+          "이 문제의 주요 원인은 Android 시스템의 뒤로 가기 버튼이 WebView의 네비게이션 상태 변화를 인식하지 못하여 WebView 내부에서 발생한 네비게이션 이벤트를 외부 Android 뒤로 가기 동작과 동기화하지 못했기 때문이다. 결과적으로, WebView의 canGoBack() 상태와 실제 웹 페이지의 위치가 일치하지 않는 상황이 발생한 것이다.",
+        solution:
+          "문제를 해결하기 위해 먼저 WebView 컴포넌트의 onNavigationStateChange 이벤트를 활용하여 현재 URL을 상태로 저장하고 관리하는 방법을 적용했다. 이를 통해 WebView에서 발생하는 모든 페이지 변경을 실시간으로 추적할 수 있게 되었다. 또한, WebView의 현재 URL 상태를 기반으로 하드웨어 뒤로 가기 버튼의 동작을 조건적으로 처리하여, 사용자가 최상위 페이지에 있을 때만 앱을 종료하거나 추가적인 토스트를 표시하도록 로직을 구현했다.",
+        link: "https://velog.io/@dpldpl/React-Native-Webview-URL-상태-관리를-통한-안드로이드-뒤로-가기-동기화",
+      },
+      {
+        title:
+          "React-Native (expo) firebase fcm 푸시 메세지 디바이스에서 나오지 않는 이슈 해결",
+        problem:
+          "파이어베이스 콘솔에서 메세지를 보낼때 안드로이드 에뮬레이터에서는 푸시메세지가 잘 작동하였는데, apk 파일로 빌드해서 실제 디바이스에서 테스트 해보니 푸시메세지가 오지 않는 이슈가 발생했다. SHA-1, SHA-256과 같은 인증서 지문의 문제일까 싶어서 파이어베이스와 expo.dev에서 값들을 확인해 봤는데 정확히 일치되어있어서 원인을 파악하기가 힘들었다.",
+        cause:
+          "원인을 파악하기 위해 expo-dev-client를 도입하여 재 빌드를 해보니 이전에는 확인할 수 없는 빌드 에러가 발생하였고, 이를 해석해보니 google-services.json 파일이 누락되었다고 하였다. EAS 빌드는 깃에서 추적하는 파일만 업로드한다고 한다. gitignore 파일에 google-services.json 파일을 추가한 것이 원인이었다.",
+        solution:
+          "google-services.json 파일을 gitignore에서 google-services.json을 주석처리하니 빌드에 성공했고, 푸시 메세지도 잘 작동하였다.",
+        link: "https://velog.io/@dpldpl/React-Native-expo-firebase-fcm-푸시-메세지-디바이스에서-나오지-않는-이슈-해결-문제-해결",
+      },
+    ],
+    imageOrientation: "portrait",
   },
   {
     title: "씨네톡",
@@ -268,5 +297,6 @@ export const projectDetails = [
         link: "https://velog.io/@dpldpl/쿠키-서버로-전송하기-credentials-문제-해결",
       },
     ],
+    imageOrientation: "landscape",
   },
 ];
