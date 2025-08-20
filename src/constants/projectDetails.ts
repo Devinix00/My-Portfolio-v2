@@ -101,72 +101,7 @@ export const projectDetails: ProjectDetail[] = [
     ],
     imageOrientation: "landscape",
   },
-  {
-    title: "모두의 텃밭",
-    description:
-      "전국의 텃밭을 조회, 등록하고, 분양하는 웹 서비스입니다. 커뮤니티, 지도, 채팅 기능이 포함되어있습니다.",
-    logoSrc: "/images/logos/everyone_s_garden.png",
-    imgSrc: "/images/projects/everyone_s_garden.png",
-    gitHub: "https://github.com/Devinix00/everyone-s-garden-front",
-    siteUrl: "https://www.everyones-garden.com/",
-    techStacks: [
-      "React",
-      "Typescript",
-      "Chakra UI",
-      "Axios",
-      "React-Query",
-      "Zustand",
-    ],
-    myContributions: [
-      "카카오, 네이버 소셜 로그인",
-      "지역 검색 (네이버 지도 위치 이동)",
-      "네이버 지도 기반 내 위치 (geolocation)",
-      "위도와 경도를 조작하여 텃밭 조회 (마커 클러스터링 적용)",
-      "사이드 바 텃밭 무한 스크롤 조회",
-      "텃밭 신고, 찜하기, 신청하기",
-    ],
-    myContributionsDetails: [
-      "리다이렉트 페이지의 쿼리스트링에 포함된 토큰 값을 백엔드 서버로 전송합니다. 백엔드 서버는 응답으로 access token을 응답 body에, refresh token을 http only 쿠키에 저장하여 반환합니다. access token의 만료기간이 10분이기 때문에 애플리케이션의 진입점에서 setInterval을 사용하여 9분마다 토큰 갱신 요청을 보냈습니다. 또한, 페이지가 새로고침되거나 시간이 지난 뒤에 다시 접속했을 때도 로그인 상태가 유지되도록 하기 위해 Zustand-Persist를 사용하여 로그인 전역 상태를 관리했습니다. 로그인 상태가 true일 경우 자동으로 토큰 갱신 요청을 보내어 자동 로그인을 구현하였습니다.",
-      "지도 페이지에서 사용자가 지역을 검색하여 해당 지역의 텃밭 정보를 쉽게 조회할 수 있도록 지역 검색 기능을 구현했습니다. input의 value가 변경될 때마다 요청을 보내는 대신, 과도한 요청을 방지하기 위해 debounce 기법을 적용했습니다.",
-      "유저가 지도 페이지에 진입할 때 geolocation을 통해 가져온 유저의 위도, 경도를 기반으로 네이버 지도를 렌더링합니다. 또한, 현재 사용자의 위치 정보를 마커로 표시합니다.",
-      "지도의 위치가 바뀔때마다 지도의 가장자리 네 부분의 위도, 경도를 쿼리스트링에 포함시켜 서버에 요청을 보내 지도에서 보이는 영역의 텃밭 데이터를 받습니다. 이 텃밭 데이터는 MarkerClustering 객체를 이용하여 마커 클러스터링을 적용하였습니다.",
-      "지도의 가장자리 위도와 경도를 통해 조회하는 텃밭들을 사이드바에서 무한 스크롤의 형태로 구현하였습니다. 이를 위해 React-Query의 useInfiniteQuery를 활용하였습니다.",
-      "React-Query의 useMutation 훅을 이용해 로딩 스피너를 처리하였습니다. 신청하기와 같은 경우에는 별 다른 서버의 요청 없이 href='tel:'을 이용하여 모바일 환경에서 텃밭을 등록한 유저의 번호로 전화를 걸 수 있게 구현하였으며, 채팅하기 버튼을 누르면 채팅방으로 이동하게 됩니다.",
-    ],
-    troubleShootings: [
-      {
-        title: "framer-motion과 transform 중앙 정렬",
-        problem:
-          "left와 transform을 Chakra UI 컴포넌트의 props로 전달하여 좌우 중앙정렬 하고 있었으나, framer-motion의 애니메이션을 추가하고 난 후 컴포넌트의 위치가 올바르게 조정되지 않는 이슈가 발생했다.",
-        cause:
-          "framer-motion을 사용할 때 x와 y 속성으로 애니메이션을 설정하면, 내부적으로 transform: translateX()와 transform: translateY()가 적용되는 것이 원인이었다. 이 경우, 기존의 CSS transform: translateX(-50%)와 충돌하여 CopyBox의 중앙 정렬이 제대로 이루어지지 않았던 것이다.",
-        solution:
-          "애니메이션 초기(initial)에 x:'50%'을 명시적으로 추가해서 transform 속성이 올바르게 적용되도록 조정하니 다시 중앙 정렬이 된 모습을 볼 수 있었다.",
-        link: "https://velog.io/@dpldpl/framer-motion과-transform-중앙-정렬-문제-해결#해결-과정",
-      },
-      {
-        title: "React 이벤트 처리 순서",
-        problem:
-          "사용자가 지도상의 지역을 선택하는 UI 컴포넌트를 클릭했을 때 지도 이동이나 지역 정보 업데이트가 예상대로 진행되지 않는 문제가 발생했다. 로깅 콘솔 자체도 출력이 되지 않았던 것으로 보았을 때, handleClickList 함수가 호출되지 않은 것으로 추정되었다.",
-        cause:
-          "이 문제의 원인은 SearchRegionsListText 컴포넌트(혹은 Input 외부)가 클릭될 때 Input 컴포넌트의 focus가 해제되어 onBlur 이벤트가 발생하고 isInputFocused 상태가 false로 업데이트 되면서 SearchRegionsList가 언마운트되었기 때문이다. 결과적으로 SearchRegionsListText 내부의 handleClickList 함수가 호출되지 못했다.",
-        solution:
-          "이 문제를 해결하기 위해 (setIsInputFocused(false))를 250밀리초 지연시키는 방법을 적용했다. 이 지연은 onClick 이벤트가 처리될 충분한 시간을 제공하여, 사용자의 클릭 동작이 완전히 처리된 후 focus 상실이 이루어지도록 보장했다.",
-        link: "https://velog.io/@dpldpl/React-이벤트-처리-순서와-비동기적-상태-업데이트-문제-해결",
-      },
-      {
-        title: "리액트 컴포넌트의 리렌더링과 state",
-        problem:
-          "리액트 컴포넌트에서 garden?.gardenLikeId를 기반으로 isGardenLiked 상태가 계산되며, 이는 사용자가 정원을 '좋아요' 했는지 여부를 나타내고 있는 상황이다. 이 값에 따라 '찜하기' 버튼의 상태가 변경되어야 하는데, liked라는 내부 상태가 초기에 한 번 설정된 후 자동으로 업데이트되지 않아 isGardenLiked와 liked의 값이 일치하지 않는 문제가 발생했다.",
-        cause:
-          "이 문제의 원인은 리액트 상태 관리의 특성에서 기인하였다. 리액트에서는 상태가 변경되면 해당 상태에 의존하는 컴포넌트의 리렌더링이 트리거된다. 그러나, 상태 초기화는 컴포넌트가 마운트될 때 단 한 번만 발생하며, 이후에는 상태 업데이트 함수를 호출하지 않는 한 기존 상태가 유지된다. useState로 선언된 liked 상태는 외부에서 gardenLikeId가 변경되어도 자동으로 업데이트되지 않기 때문에, isGardenLiked의 변경이 liked에 반영되지 않는 것이었다.",
-        solution:
-          "이 문제를 해결하기 위해 useEffect를 사용하여 gardenLikeId의 변경을 감지하고, 이에 따라 liked 상태를 업데이트하는 방법을 구현했다. useEffect 내에서 gardenLikeId를 의존성 배열로 설정하여, 해당 값이 변경될 때마다 liked 상태를 적절히 업데이트하도록 했다.",
-        link: "https://velog.io/@dpldpl/리액트-컴포넌트의-리렌더링과-state-문제-해결",
-      },
-    ],
-    imageOrientation: "landscape",
-  },
+
   {
     title: "오늘의 운세",
     description:
@@ -297,6 +232,72 @@ export const projectDetails: ProjectDetail[] = [
         solution:
           "문제를 해결하기 위해 fetch 요청에 credentials: 'include' 옵션을 추가함으로 문제를 해결하였다.",
         link: "https://velog.io/@dpldpl/쿠키-서버로-전송하기-credentials-문제-해결",
+      },
+    ],
+    imageOrientation: "landscape",
+  },
+  {
+    title: "모두의 텃밭",
+    description:
+      "전국의 텃밭을 조회, 등록하고, 분양하는 웹 서비스입니다. 커뮤니티, 지도, 채팅 기능이 포함되어있습니다.",
+    logoSrc: "/images/logos/everyone_s_garden.png",
+    imgSrc: "/images/projects/everyone_s_garden.png",
+    gitHub: "https://github.com/Devinix00/everyone-s-garden-front",
+    siteUrl: "https://www.everyones-garden.com/",
+    techStacks: [
+      "React",
+      "Typescript",
+      "Chakra UI",
+      "Axios",
+      "React-Query",
+      "Zustand",
+    ],
+    myContributions: [
+      "카카오, 네이버 소셜 로그인",
+      "지역 검색 (네이버 지도 위치 이동)",
+      "네이버 지도 기반 내 위치 (geolocation)",
+      "위도와 경도를 조작하여 텃밭 조회 (마커 클러스터링 적용)",
+      "사이드 바 텃밭 무한 스크롤 조회",
+      "텃밭 신고, 찜하기, 신청하기",
+    ],
+    myContributionsDetails: [
+      "리다이렉트 페이지의 쿼리스트링에 포함된 토큰 값을 백엔드 서버로 전송합니다. 백엔드 서버는 응답으로 access token을 응답 body에, refresh token을 http only 쿠키에 저장하여 반환합니다. access token의 만료기간이 10분이기 때문에 애플리케이션의 진입점에서 setInterval을 사용하여 9분마다 토큰 갱신 요청을 보냈습니다. 또한, 페이지가 새로고침되거나 시간이 지난 뒤에 다시 접속했을 때도 로그인 상태가 유지되도록 하기 위해 Zustand-Persist를 사용하여 로그인 전역 상태를 관리했습니다. 로그인 상태가 true일 경우 자동으로 토큰 갱신 요청을 보내어 자동 로그인을 구현하였습니다.",
+      "지도 페이지에서 사용자가 지역을 검색하여 해당 지역의 텃밭 정보를 쉽게 조회할 수 있도록 지역 검색 기능을 구현했습니다. input의 value가 변경될 때마다 요청을 보내는 대신, 과도한 요청을 방지하기 위해 debounce 기법을 적용했습니다.",
+      "유저가 지도 페이지에 진입할 때 geolocation을 통해 가져온 유저의 위도, 경도를 기반으로 네이버 지도를 렌더링합니다. 또한, 현재 사용자의 위치 정보를 마커로 표시합니다.",
+      "지도의 위치가 바뀔때마다 지도의 가장자리 네 부분의 위도, 경도를 쿼리스트링에 포함시켜 서버에 요청을 보내 지도에서 보이는 영역의 텃밭 데이터를 받습니다. 이 텃밭 데이터는 MarkerClustering 객체를 이용하여 마커 클러스터링을 적용하였습니다.",
+      "지도의 가장자리 위도와 경도를 통해 조회하는 텃밭들을 사이드바에서 무한 스크롤의 형태로 구현하였습니다. 이를 위해 React-Query의 useInfiniteQuery를 활용하였습니다.",
+      "React-Query의 useMutation 훅을 이용해 로딩 스피너를 처리하였습니다. 신청하기와 같은 경우에는 별 다른 서버의 요청 없이 href='tel:'을 이용하여 모바일 환경에서 텃밭을 등록한 유저의 번호로 전화를 걸 수 있게 구현하였으며, 채팅하기 버튼을 누르면 채팅방으로 이동하게 됩니다.",
+    ],
+    troubleShootings: [
+      {
+        title: "framer-motion과 transform 중앙 정렬",
+        problem:
+          "left와 transform을 Chakra UI 컴포넌트의 props로 전달하여 좌우 중앙정렬 하고 있었으나, framer-motion의 애니메이션을 추가하고 난 후 컴포넌트의 위치가 올바르게 조정되지 않는 이슈가 발생했다.",
+        cause:
+          "framer-motion을 사용할 때 x와 y 속성으로 애니메이션을 설정하면, 내부적으로 transform: translateX()와 transform: translateY()가 적용되는 것이 원인이었다. 이 경우, 기존의 CSS transform: translateX(-50%)와 충돌하여 CopyBox의 중앙 정렬이 제대로 이루어지지 않았던 것이다.",
+        solution:
+          "애니메이션 초기(initial)에 x:'50%'을 명시적으로 추가해서 transform 속성이 올바르게 적용되도록 조정하니 다시 중앙 정렬이 된 모습을 볼 수 있었다.",
+        link: "https://velog.io/@dpldpl/framer-motion과-transform-중앙-정렬-문제-해결#해결-과정",
+      },
+      {
+        title: "React 이벤트 처리 순서",
+        problem:
+          "사용자가 지도상의 지역을 선택하는 UI 컴포넌트를 클릭했을 때 지도 이동이나 지역 정보 업데이트가 예상대로 진행되지 않는 문제가 발생했다. 로깅 콘솔 자체도 출력이 되지 않았던 것으로 보았을 때, handleClickList 함수가 호출되지 않은 것으로 추정되었다.",
+        cause:
+          "이 문제의 원인은 SearchRegionsListText 컴포넌트(혹은 Input 외부)가 클릭될 때 Input 컴포넌트의 focus가 해제되어 onBlur 이벤트가 발생하고 isInputFocused 상태가 false로 업데이트 되면서 SearchRegionsList가 언마운트되었기 때문이다. 결과적으로 SearchRegionsListText 내부의 handleClickList 함수가 호출되지 못했다.",
+        solution:
+          "이 문제를 해결하기 위해 (setIsInputFocused(false))를 250밀리초 지연시키는 방법을 적용했다. 이 지연은 onClick 이벤트가 처리될 충분한 시간을 제공하여, 사용자의 클릭 동작이 완전히 처리된 후 focus 상실이 이루어지도록 보장했다.",
+        link: "https://velog.io/@dpldpl/React-이벤트-처리-순서와-비동기적-상태-업데이트-문제-해결",
+      },
+      {
+        title: "리액트 컴포넌트의 리렌더링과 state",
+        problem:
+          "리액트 컴포넌트에서 garden?.gardenLikeId를 기반으로 isGardenLiked 상태가 계산되며, 이는 사용자가 정원을 '좋아요' 했는지 여부를 나타내고 있는 상황이다. 이 값에 따라 '찜하기' 버튼의 상태가 변경되어야 하는데, liked라는 내부 상태가 초기에 한 번 설정된 후 자동으로 업데이트되지 않아 isGardenLiked와 liked의 값이 일치하지 않는 문제가 발생했다.",
+        cause:
+          "이 문제의 원인은 리액트 상태 관리의 특성에서 기인하였다. 리액트에서는 상태가 변경되면 해당 상태에 의존하는 컴포넌트의 리렌더링이 트리거된다. 그러나, 상태 초기화는 컴포넌트가 마운트될 때 단 한 번만 발생하며, 이후에는 상태 업데이트 함수를 호출하지 않는 한 기존 상태가 유지된다. useState로 선언된 liked 상태는 외부에서 gardenLikeId가 변경되어도 자동으로 업데이트되지 않기 때문에, isGardenLiked의 변경이 liked에 반영되지 않는 것이었다.",
+        solution:
+          "이 문제를 해결하기 위해 useEffect를 사용하여 gardenLikeId의 변경을 감지하고, 이에 따라 liked 상태를 업데이트하는 방법을 구현했다. useEffect 내에서 gardenLikeId를 의존성 배열로 설정하여, 해당 값이 변경될 때마다 liked 상태를 적절히 업데이트하도록 했다.",
+        link: "https://velog.io/@dpldpl/리액트-컴포넌트의-리렌더링과-state-문제-해결",
       },
     ],
     imageOrientation: "landscape",
